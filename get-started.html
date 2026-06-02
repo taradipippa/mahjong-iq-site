@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started — Mahjong IQ</title>
+  <meta name="description" content="Try Mahjong IQ free — 3 hand analyses on us. Unlock unlimited access with a one-time purchase." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F4F5F7;
+      --white:     #FFFFFF;
+      --navy:      #1F2A36;
+      --navy-lt:   #2D3F52;
+      --slate:     #5E6A78;
+      --slate-lt:  #9BA4AF;
+      --gold:      #B89A5B;
+      --gold-lt:   #EDE5CA;
+      --gold-dark: #8B7235;
+      --border:    #DDE0E5;
+      --border-lt: #ECEEF1;
+      --green:     #2A6B4A;
+      --green-lt:  #EAF5EF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--navy);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    }
+    nav.scrolled {
+      background: rgba(244,245,247,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-lt);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 56px; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 11px;
+      text-decoration: none; color: var(--white); flex-shrink: 0;
+    }
+    nav.scrolled .nav-brand { color: var(--navy); }
+    .nav-brand-icon { height: 36px; width: auto; display: block; }
+    .nav-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 500; letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,.65);
+      text-decoration: none; transition: color .15s;
+    }
+    nav.scrolled .nav-links a { color: var(--slate); }
+    .nav-links a:hover { color: white; }
+    nav.scrolled .nav-links a:hover { color: var(--navy); }
+    .nav-btn {
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 10px 24px; border-radius: 3px;
+      background: var(--gold); color: var(--navy);
+      transition: all .18s; white-space: nowrap;
+    }
+    .nav-btn:hover { background: #A88A4A; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-inner { padding: 0 28px; }
+    }
+
+    /* ── HERO ── */
+    .gs-hero {
+      min-height: 100svh;
+      background: var(--navy);
+      background-image:
+        radial-gradient(ellipse at 15% 60%, rgba(184,154,91,.09) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 25%, rgba(184,154,91,.05) 0%, transparent 50%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .gs-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .3; pointer-events: none;
+    }
+    .gs-hero-inner {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 160px 56px 120px;
+      width: 100%; text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 24px; display: block;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 400; line-height: 1.1;
+      color: var(--white); margin-bottom: 22px;
+    }
+    .hero-sub {
+      font-size: 17px; font-weight: 300;
+      color: rgba(255,255,255,.52);
+      line-height: 1.72; margin-bottom: 52px;
+      max-width: 520px; margin-left: auto; margin-right: auto;
+    }
+    .hero-sub em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 19px;
+      color: rgba(255,255,255,.38);
+      font-weight: 400;
+    }
+
+    /* ── TRIAL WIDGET ── */
+    .trial-widget {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 10px;
+      padding: 40px 48px 36px;
+      max-width: 440px;
+      margin: 0 auto 44px;
+    }
+    .trial-dots {
+      display: flex; gap: 14px; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .trial-dot {
+      width: 13px; height: 13px; border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--gold);
+      transition: background .4s ease, opacity .4s ease, border-color .4s ease;
+    }
+    .trial-dot.used {
+      background: transparent;
+      opacity: .3;
+    }
+    .trial-dot.purchased {
+      background: #5DC490;
+      border-color: #5DC490;
+      opacity: 1;
+    }
+    .trial-status {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold); opacity: .9;
+      margin-bottom: 28px;
+    }
+    .trial-status.exhausted { color: var(--slate-lt); }
+    .trial-status.purchased { color: #5DC490; }
+
+    .btn-try {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 18px 32px; border-radius: 4px;
+      background: var(--gold); color: var(--navy);
+      border: 1.5px solid var(--gold);
+      cursor: pointer; transition: all .2s;
+      margin-bottom: 16px;
+    }
+    .btn-try:hover { background: #A88A4A; border-color: #A88A4A; transform: translateY(-1px); }
+    .btn-try.exhausted {
+      background: transparent; color: var(--gold);
+    }
+    .btn-try.exhausted:hover { background: rgba(184,154,91,.1); transform: none; }
+    .btn-try.purchased-state {
+      background: var(--green); color: #fff; border-color: var(--green);
+    }
+    .btn-try.purchased-state:hover { background: #235C3F; }
+
+    .trial-note {
+      font-size: 12px; color: rgba(255,255,255,.25);
+      line-height: 1.5;
+    }
+
+    .hero-scroll-link {
+      display: inline-block;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.28);
+      text-decoration: none; transition: color .15s;
+    }
+    .hero-scroll-link:hover { color: rgba(255,255,255,.5); }
+
+    @media (max-width: 680px) {
+      .gs-hero-inner { padding: 140px 24px 100px; }
+      .trial-widget { padding: 32px 24px 28px; }
+    }
+
+    /* ── HOW STRIP ── */
+    .how-strip {
+      background: var(--white);
+      padding: 88px 0;
+      border-bottom: 1px solid var(--border-lt);
+    }
+    .how-strip-inner {
+      max-width: 1040px; margin: 0 auto; padding: 0 56px;
+    }
+    .how-strip-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      text-align: center; display: block; margin-bottom: 48px;
+    }
+    .how-strip-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+    }
+    .how-step {
+      padding: 0 40px; text-align: center;
+      border-right: 1px solid var(--border-lt);
+    }
+    .how-step:first-child { padding-left: 0; }
+    .how-step:last-child  { border-right: none; padding-right: 0; }
+    .how-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px; font-weight: 400;
+      color: var(--gold-lt); line-height: 1;
+      display: block; margin-bottom: 14px;
+    }
+    .how-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 400;
+      color: var(--navy); margin-bottom: 8px;
+    }
+    .how-step p {
+      font-size: 14px; font-weight: 300;
+      color: var(--slate); line-height: 1.72;
+    }
+    @media (max-width: 720px) {
+      .how-strip-inner { padding: 0 28px; }
+      .how-strip-grid { grid-template-columns: 1fr; gap: 40px; }
+      .how-step { border-right: none; padding: 0 0 40px; border-bottom: 1px solid var(--border-lt); }
+      .how-step:last-child { border-bottom: none; padding-bottom: 0; }
+    }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      background: var(--bg);
+      padding: 120px 0;
+      text-align: center;
+    }
+    .pricing-inner {
+      max-width: 580px; margin: 0 auto; padding: 0 56px;
+    }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 18px; display: block;
+    }
+    .section-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 400; line-height: 1.18;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .section-sub {
+      font-size: 15px; font-weight: 300;
+      color: var(--slate); margin-bottom: 52px;
+    }
+
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px; overflow: hidden;
+      text-align: left;
+      box-shadow: 0 12px 56px rgba(31,42,54,.08), 0 2px 8px rgba(31,42,54,.04);
+    }
+    .pricing-card-top {
+      background: var(--navy);
+      padding: 40px 44px 36px;
+      position: relative;
+    }
+    .pricing-card-top::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark) 0%, var(--gold) 60%, #D4B87A 100%);
+    }
+    .pricing-product-name {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 18px;
+    }
+    .pricing-price {
+      display: flex; align-items: baseline; gap: 12px;
+      margin-bottom: 8px;
+    }
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 60px; font-weight: 400;
+      color: var(--white); line-height: 1;
+      letter-spacing: -0.01em;
+    }
+    .price-period {
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,.4); letter-spacing: 0.04em;
+    }
+    .price-tagline {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,.38); font-style: italic;
+    }
+
+    .pricing-card-body { padding: 36px 44px 40px; }
+
+    .pricing-features {
+      list-style: none; margin-bottom: 36px;
+    }
+    .pricing-features li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 14.5px; font-weight: 400;
+      color: var(--navy); line-height: 1.5;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-lt);
+    }
+    .pricing-features li:first-child { padding-top: 0; }
+    .pricing-features li:last-child  { border-bottom: none; padding-bottom: 0; }
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--gold); font-weight: 700;
+      font-size: 12px; flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .btn-buy {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 18px 36px; border-radius: 4px;
+      background: var(--gold); color: var(--navy);
+      transition: all .18s; margin-bottom: 16px;
+    }
+    .btn-buy:hover { background: #A88A4A; transform: translateY(-1px); }
+
+    .pricing-guarantee {
+      font-size: 12px; color: var(--slate-lt);
+      text-align: center; line-height: 1.7;
+    }
+
+    @media (max-width: 680px) {
+      .pricing-section { padding: 80px 0; }
+      .pricing-inner { padding: 0 24px; }
+      .pricing-card-top { padding: 32px 28px 28px; }
+      .pricing-card-body { padding: 28px 28px 32px; }
+    }
+
+    /* ── ACCESS SECTION (shown after purchase) ── */
+    .access-section {
+      background: var(--navy);
+      padding: 100px 0;
+      text-align: center;
+      display: none;
+    }
+    .access-section.visible { display: block; }
+    .access-inner {
+      max-width: 640px; margin: 0 auto; padding: 0 56px;
+    }
+    .access-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(93,196,144,.12);
+      border: 2px solid rgba(93,196,144,.4);
+      font-size: 26px; color: #5DC490;
+      margin-bottom: 28px;
+    }
+    .access-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400; line-height: 1.18;
+      color: var(--white); margin-bottom: 14px;
+    }
+    .access-body {
+      font-size: 16px; font-weight: 300;
+      color: rgba(255,255,255,.48);
+      margin-bottom: 40px; line-height: 1.72;
+    }
+    .btn-launch {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 18px 44px; border-radius: 4px;
+      background: var(--gold); color: var(--navy);
+      transition: all .18s; margin-bottom: 48px;
+    }
+    .btn-launch:hover { background: #A88A4A; transform: translateY(-1px); }
+
+    @media (max-width: 680px) {
+      .access-inner { padding: 0 24px; }
+    }
+
+    /* ── HOME SCREEN STEPS (inside FAQ) ── */
+    .faq-hs-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; padding: 4px 0 24px;
+    }
+    .faq-hs-col {
+      background: var(--bg);
+      border-radius: 8px; padding: 24px 20px;
+    }
+    .faq-hs-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 4px;
+    }
+    .faq-hs-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 500;
+      color: var(--navy); margin-bottom: 4px;
+    }
+    .faq-hs-note {
+      font-size: 12px; color: var(--slate-lt);
+      font-style: italic; margin-bottom: 20px; line-height: 1.5;
+    }
+    .faq-hs-step {
+      display: flex; gap: 13px; align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .faq-hs-step:last-child { margin-bottom: 0; }
+    .faq-hs-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .faq-hs-text {
+      font-size: 14px; font-weight: 300;
+      color: var(--slate); line-height: 1.65;
+    }
+    .faq-hs-text strong { color: var(--navy); font-weight: 500; }
+    .tap {
+      display: inline-flex; align-items: center;
+      background: var(--navy); color: #fff;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+      padding: 2px 8px 2px 7px; border-radius: 4px;
+      vertical-align: middle; white-space: nowrap;
+    }
+    .tap.gold { background: var(--gold); color: var(--navy); }
+    @media (max-width: 640px) {
+      .faq-hs-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      background: var(--white);
+      padding: 100px 0;
+    }
+    .faq-inner {
+      max-width: 640px; margin: 0 auto; padding: 0 56px;
+    }
+    .faq-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 400; color: var(--navy);
+      margin-bottom: 48px; text-align: center;
+    }
+    details.faq-item { border-top: 1px solid var(--border-lt); }
+    details.faq-item:last-child { border-bottom: 1px solid var(--border-lt); }
+    details.faq-item summary {
+      font-size: 15px; font-weight: 500;
+      color: var(--navy); padding: 22px 0;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: '+'; font-size: 20px; font-weight: 300;
+      color: var(--slate-lt); flex-shrink: 0;
+      transition: transform .2s;
+    }
+    details.faq-item[open] summary::after { transform: rotate(45deg); }
+    details.faq-item p {
+      font-size: 14.5px; font-weight: 300;
+      color: var(--slate); line-height: 1.78;
+      padding-bottom: 24px;
+    }
+    @media (max-width: 680px) {
+      .faq-section { padding: 72px 0; }
+      .faq-inner { padding: 0 24px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #151E28;
+      padding: 48px 0;
+      border-top: 1px solid rgba(255,255,255,.05);
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .footer-brand img { height: 28px; width: auto; opacity: .7; }
+    .footer-brand span {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px; font-weight: 500; color: rgba(255,255,255,.4);
+    }
+    .footer-links { display: flex; gap: 32px; list-style: none; }
+    .footer-links a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,.25);
+      text-decoration: none; transition: color .15s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,.5); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.18); }
+    @media (max-width: 680px) {
+      .footer-inner { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer-links { flex-wrap: wrap; gap: 20px; }
+    }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+  </style>
+</head>
+
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src=".claude/mahjong IQ tile front facing.png" alt="Mahjong IQ" class="nav-brand-icon" />
+      <span class="nav-brand-name">Mahjong IQ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="get-started.html" class="nav-btn">Get Started</a>
+  </div>
+</nav>
+
+
+<!-- ── HERO ── -->
+<section class="gs-hero">
+  <div class="gs-hero-inner">
+
+    <span class="hero-eyebrow">Try It Free</span>
+    <h1 class="hero-h1 reveal">Try it free.<br>Play it anywhere.</h1>
+    <p class="hero-sub reveal reveal-delay-1">
+      Analyze 3 hands for free and discover why players use Mahjong IQ Hand Analyzer
+      to build confidence and see stronger possibilities.<br><br>
+      <em>The more you use it, the less you'll need it.</em>
+    </p>
+
+    <!-- Trial widget -->
+    <div class="trial-widget reveal reveal-delay-2">
+      <div class="trial-dots" id="trialDots">
+        <span class="trial-dot" data-index="0"></span>
+        <span class="trial-dot" data-index="1"></span>
+        <span class="trial-dot" data-index="2"></span>
+      </div>
+      <div class="trial-status" id="trialStatus">3 free analyses remaining</div>
+      <button class="btn-try" id="tryBtn" onclick="handleTry()">
+        Analyze Your Hand — Free
+      </button>
+      <p class="trial-note" id="trialNote">Opens in a new tab · No account needed</p>
+    </div>
+
+    <a href="#pricing" class="hero-scroll-link reveal reveal-delay-2">See pricing ↓</a>
+
+  </div>
+</section>
+
+
+<!-- ── HOW IT WORKS STRIP ── -->
+<div class="how-strip">
+  <div class="how-strip-inner">
+    <span class="how-strip-label">Here's how it works</span>
+    <div class="how-strip-grid">
+      <div class="how-step reveal">
+        <span class="how-num">01</span>
+        <h3>Try it free</h3>
+        <p>Analyze up to 3 hands at no cost — no account, no credit card, no commitment.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-1">
+        <span class="how-num">02</span>
+        <h3>See what's possible</h3>
+        <p>Explore your best hand options, win probabilities, pivot paths, and discard guidance.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-2">
+        <span class="how-num">03</span>
+        <h3>Unlock unlimited access</h3>
+        <p>One-time purchase. Use it every game — in your browser or added to your home screen.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── PRICING ── -->
+<section id="pricing" class="pricing-section">
+  <div class="pricing-inner">
+    <span class="section-eyebrow reveal">Pricing</span>
+    <h2 class="section-h2 reveal reveal-delay-1">One price. Unlimited hands.</h2>
+    <p class="section-sub reveal reveal-delay-1">Not a subscription. Pay once, keep it forever.</p>
+
+    <div class="pricing-card reveal reveal-delay-2">
+      <div class="pricing-card-top">
+        <span class="pricing-product-name">Hand Analyzer by Mahjong IQ</span>
+        <div class="pricing-price">
+          <span class="price-amount" id="priceDisplay">$14.99</span>
+          <span class="price-period">one-time</span>
+        </div>
+        <p class="price-tagline">Yours forever — not a subscription.</p>
+      </div>
+      <div class="pricing-card-body">
+        <ul class="pricing-features">
+          <li>Unlimited hand analyses</li>
+          <li>All hand categories scored with win probability</li>
+          <li>Pivot hand and alternate path recommendations</li>
+          <li>Discard guidance</li>
+          <li>Works in any browser — no install required</li>
+          <li>Add to home screen on iPhone or Android</li>
+          <li>Future updates included</li>
+        </ul>
+        <a href="#" id="buyBtn" class="btn-buy">Buy Now — <span id="btnPrice">$14.99</span></a>
+        <p class="pricing-guarantee">
+          Secure checkout via Stripe &nbsp;·&nbsp; Instant access
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── ACCESS SECTION — shown after purchase ── -->
+<section id="access" class="access-section">
+  <div class="access-inner">
+    <div class="access-badge">✓</div>
+    <h2 class="access-h2">You're in. Let's play.</h2>
+    <p class="access-body">
+      Your purchase is confirmed. The Hand Analyzer is ready whenever you are —
+      open it in your browser, or add it to your home screen for one-tap access.
+    </p>
+    <a href="#" id="launchBtn" class="btn-launch">Launch Hand Analyzer →</a>
+  </div>
+</section>
+
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <h2 class="faq-h2 reveal">Questions</h2>
+
+    <details class="faq-item reveal">
+      <summary>What happens right after I buy?</summary>
+      <p>Stripe will send you a confirmation email, and you'll land back here with your access unlocked. Just click Launch Hand Analyzer and you're in. We'd recommend adding it to your home screen right away so it's always one tap away — see below for how.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>I bought it on my computer. How do I get it on my phone?</summary>
+      <p>Just open <strong>getmahjongiq.com/get-started.html</strong> in your phone's browser. This page will remember your purchase and show you the Launch button. Tap it, then follow the steps below to add it to your home screen.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>How do I add the Hand Analyzer to my home screen so it looks like all of my other apps?</summary>
+      <div class="faq-hs-grid">
+        <div class="faq-hs-col">
+          <span class="faq-hs-label">iPhone</span>
+          <div class="faq-hs-name">Safari</div>
+          <p class="faq-hs-note">Must use Safari — other browsers don't support this on iPhone</p>
+          <div class="faq-hs-step">
+            <div class="faq-hs-num">1</div>
+            <div class="faq-hs-text">Open the Hand Analyzer in <strong>Safari</strong></div>
+          </div>
+          <div class="faq-hs-step">
+            <div class="faq-hs-num">2</div>
+            <div class="faq-hs-text">Tap the <span class="tap">Share ↑</span> button at the bottom of the screen</div>
+          </div>
+          <div class="faq-hs-step">
+            <div class="faq-hs-num">3</div>
+            <div class="faq-hs-text">Scroll down and tap <span class="tap">Add to Home Screen</span></div>
+          </div>
+          <div class="faq-hs-step">
+            <div class="faq-hs-num">4</div>
+            <div class="faq-hs-text">Tap <span class="tap gold">Add</span> — done</div>
+          </div>
+        </div>
+        <div class="faq-hs-col">
+          <span class="faq-hs-label">Android</span>
+          <div class="faq-hs-name">Chrome</div>
+          <p class="faq-hs-note">Works in Chrome — also in most other Android browsers</p>
+          <div class="faq-hs-step">
+            <div class="faq-hs-num">1</div>
+            <div class="faq-hs-text">Open the Hand Analyzer in <strong>Chrome</strong></div>
+          </div>
+          <div class="faq-hs-step">
+            <div class="faq-hs-num">2</div>
+            <div class="faq-hs-text">Tap the <span class="tap">⋮</span> menu in the top right corner</div>
+          </div>
+          <div class="faq-hs-step">
+            <div class="faq-hs-num">3</div>
+            <div class="faq-hs-text">Tap <span class="tap">Add to Home screen</span></div>
+          </div>
+          <div class="faq-hs-step">
+            <div class="faq-hs-num">4</div>
+            <div class="faq-hs-text">Tap <span class="tap gold">Add</span> — done</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>When should I use the Hand Analyzer?</summary>
+      <p>If you're playing by yourself, a great way to practice is to pick some tiles, decide which hands you'd play in a real game, then hit Analyze and see how your thinking compares. You'll learn a lot from the guidance.</p>
+      <p style="margin-top: 12px;">If you're playing with others, make sure everyone at the table has access so no one has an unfair advantage. The best time to use it together is before, during, and/or after the charleston — before the first tile is cast.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>I got a new phone or cleared my browser. Now what?</summary>
+      <p>Come back to <strong>getmahjongiq.com/get-started.html</strong> first — this page remembers your purchase most of the time and will get you right back in. If you're on a brand new device and it's not recognizing you, just email <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> with your Stripe receipt and I'll restore your access the same day.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>Does it work without wifi?</summary>
+      <p>Yes. Once you've opened the Hand Analyzer on your device, it works even without a connection — perfect for playing at someone's house or anywhere with spotty signal.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>Is this a one-time purchase or a subscription?</summary>
+      <p>One-time. You pay $14.99 once and the Hand Analyzer is yours with no recurring charges, ever.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>What happens when next year's hands come out?</summary>
+      <p>The 2026 Hand Analyzer will always work — we'd never take that away from you. When the 2027 card is released, you can purchase the 2027 hands or keep using 2026. Totally your call.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>What's your refund policy?</summary>
+      <p>Because you can try the Hand Analyzer free before you buy, we don't offer refunds as a general policy. That said, if you ran into a technical problem we couldn't solve, reach out at <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> and I'll make it right.</p>
+    </details>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-brand">
+      <img src=".claude/mahjong IQ tile front facing.png" alt="Mahjong IQ" />
+      <span>Mahjong IQ</span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="get-started.html">Get Started</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Mahjong IQ</span>
+  </div>
+</footer>
+
+
+<script>
+  /* ─────────────────────────────────────────────────────────────────────────────
+   *  CONFIG — fill these in once you've set up Stripe
+   * ─────────────────────────────────────────────────────────────────────────────
+   *
+   *  APP_URL
+   *    Your Vercel app URL, e.g. 'https://mahjong-iq.vercel.app'
+   *
+   *  STRIPE_LINK
+   *    Your Stripe Payment Link URL.
+   *    Steps: stripe.com → Products → create product → Payment Links → create link
+   *    Under "After payment" → set redirect to custom URL:
+   *    https://www.getmahjongiq.com/get-started.html?purchased=true
+   *
+   *  PRICE_DISPLAY
+   *    The price string shown on the page — update if you change your price.
+   *    (Must match what you set in Stripe)
+   *
+   * ───────────────────────────────────────────────────────────────────────────── */
+  const APP_URL       = 'https://mahj-pwa.vercel.app'; // Your Vercel app
+  const STRIPE_LINK   = '#'; // TODO → 'https://buy.stripe.com/xxxxxxxxxxxx'
+  const PRICE_DISPLAY = '$14.99';
+  const ACCESS_CODE   = 'mjiq_unlock_v1'; // Secret unlock code — must match the app
+
+  /* ── Storage ── */
+  const TRIAL_KEY    = 'mjiq_trials_v1';    // stores number of trials used (0–3)
+  const PURCHASE_KEY = 'mjiq_purchased_v1'; // stores 'true' after purchase
+  const MAX_TRIALS   = 3;
+
+  /* ── Helpers ── */
+  const getUsed      = () => parseInt(localStorage.getItem(TRIAL_KEY) || '0');
+  const getRemaining = () => Math.max(0, MAX_TRIALS - getUsed());
+  const isPurchased  = () => localStorage.getItem(PURCHASE_KEY) === 'true';
+
+  /* ── Check if returning from Stripe ── */
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('purchased') === 'true') {
+    localStorage.setItem(PURCHASE_KEY, 'true');
+    history.replaceState({}, '', window.location.pathname); // clean ?purchased=true from URL
+  }
+
+  /* ── Set prices from config ── */
+  document.getElementById('priceDisplay').textContent = PRICE_DISPLAY;
+  document.getElementById('btnPrice').textContent = PRICE_DISPLAY;
+  document.getElementById('buyBtn').href = STRIPE_LINK;
+  document.getElementById('launchBtn').href = APP_URL + '?access=' + ACCESS_CODE;
+
+  /* ── Update all UI based on current state ── */
+  function updateUI() {
+    const purchased = isPurchased();
+    const used      = getUsed();
+    const remaining = getRemaining();
+
+    const dots    = document.querySelectorAll('.trial-dot');
+    const status  = document.getElementById('trialStatus');
+    const tryBtn  = document.getElementById('tryBtn');
+    const tryNote = document.getElementById('trialNote');
+
+    if (purchased) {
+      /* ── Purchased: everything unlocked ── */
+      dots.forEach(dot => {
+        dot.classList.remove('used');
+        dot.classList.add('purchased');
+      });
+      status.textContent = 'Unlimited access unlocked ✓';
+      status.className = 'trial-status purchased';
+      tryBtn.textContent = 'Launch Hand Analyzer →';
+      tryBtn.className = 'btn-try purchased-state';
+      tryNote.textContent = 'Opens in a new tab';
+
+      /* Show access section */
+      document.getElementById('access').classList.add('visible');
+      document.getElementById('launchBtn').href = APP_URL + '?access=' + ACCESS_CODE;
+
+    } else if (remaining === 0) {
+      /* ── Trials exhausted ── */
+      dots.forEach(dot => dot.classList.add('used'));
+      status.textContent = 'Free tries used — ready to go unlimited?';
+      status.className = 'trial-status exhausted';
+      tryBtn.textContent = 'Get Unlimited Access →';
+      tryBtn.className = 'btn-try exhausted';
+      tryNote.textContent = 'See pricing below';
+
+    } else {
+      /* ── Trials remaining ── */
+      dots.forEach((dot, i) => {
+        /* Dots deplete right-to-left (like a battery) */
+        dot.classList.toggle('used', i >= MAX_TRIALS - used);
+        dot.classList.remove('purchased');
+      });
+      const word = remaining === 1 ? 'analysis' : 'analyses';
+      status.textContent = `${remaining} free ${word} remaining`;
+      status.className = 'trial-status';
+      tryBtn.textContent = 'Analyze Your Hand — Free';
+      tryBtn.className = 'btn-try';
+      tryNote.textContent = 'Opens in a new tab · No account needed';
+    }
+  }
+
+  /* ── Try button handler ── */
+  function handleTry() {
+    if (isPurchased()) {
+      window.open(APP_URL + '?access=' + ACCESS_CODE, '_blank');
+      return;
+    }
+    if (getRemaining() === 0) {
+      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    /* Use one trial, then open the app */
+    localStorage.setItem(TRIAL_KEY, getUsed() + 1);
+    window.open(APP_URL, '_blank');
+    updateUI();
+  }
+
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Scroll reveal ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── Initialize ── */
+  updateUI();
+</script>
+
+</body>
+</html>
