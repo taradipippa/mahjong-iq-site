@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahjong IQ — Play with clarity.</title>
+  <meta name="description" content="See your best hand options instantly. Ranked analysis based on your tiles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F4F5F7;
+      --white:     #FFFFFF;
+      --navy:      #1F2A36;
+      --navy-lt:   #2D3F52;
+      --slate:     #5E6A78;
+      --slate-lt:  #9BA4AF;
+      --gold:      #B89A5B;
+      --gold-lt:   #EDE5CA;
+      --gold-dark: #8B7235;
+      --border:    #DDE0E5;
+      --border-lt: #ECEEF1;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--navy);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    }
+    nav.scrolled {
+      background: rgba(244,245,247,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-lt);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 56px; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 11px;
+      text-decoration: none; color: var(--white); flex-shrink: 0;
+    }
+    nav.scrolled .nav-brand { color: var(--navy); }
+    .nav-brand-icon { height: 36px; width: auto; display: block; }
+    .nav-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,.65);
+      text-decoration: none; transition: color .15s;
+    }
+    nav.scrolled .nav-links a { color: var(--slate); }
+    .nav-links a:hover { color: white; }
+    nav.scrolled .nav-links a:hover { color: var(--navy); }
+    .nav-btn {
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 10px 24px; border-radius: 3px;
+      background: var(--gold); color: var(--navy);
+      transition: all .18s; white-space: nowrap;
+    }
+    .nav-btn:hover { background: #A88A4A; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-inner { padding: 0 28px; }
+    }
+
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      background-image:
+        linear-gradient(to right, rgba(20,30,42,.88) 0%, rgba(20,30,42,.72) 50%, rgba(20,30,42,.45) 100%),
+        url('hero.png');
+      background-size: cover;
+      background-position: center 30%;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    /* subtle grain texture */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .35; pointer-events: none;
+    }
+    /* warm gold accent — pulls from image warmth */
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 220px;
+      background: linear-gradient(to top, rgba(15,22,32,.6) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1280px; margin: 0 auto;
+      padding: 140px 56px 100px;
+      width: 100%;
+    }
+    .hero-content { max-width: 640px; }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px; display: block;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(48px, 6vw, 84px);
+      font-weight: 400; line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero-subhead {
+      font-size: 20px; font-weight: 300;
+      color: rgba(255,255,255,.6);
+      line-height: 1.55; margin-bottom: 12px;
+    }
+    .hero-support {
+      font-size: 15px; font-weight: 300;
+      color: rgba(255,255,255,.42);
+      line-height: 1.6; margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+    .btn-primary {
+      display: inline-flex; align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 15px 36px; border-radius: 3px;
+      background: var(--white); color: var(--navy);
+      transition: all .18s; border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: #EEF0F2; transform: translateY(-1px); }
+    .btn-primary.gold { background: var(--gold); color: var(--navy); }
+    .btn-primary.gold:hover { background: #A88A4A; }
+    .btn-ghost {
+      display: inline-flex; align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 15px 28px; border-radius: 3px;
+      background: transparent; color: rgba(255,255,255,.6);
+      border: 1px solid rgba(255,255,255,.2);
+      transition: all .18s; cursor: pointer;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.5); color: white; }
+    .hero-fine {
+      font-size: 12px; color: rgba(255,255,255,.28);
+      letter-spacing: 0.04em;
+    }
+    /* scroll cue */
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 56px;
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.25); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 40px; height: 1px; background: rgba(255,255,255,.2);
+    }
+
+
+    /* ── SHARED LAYOUT ── */
+    .container        { max-width: 1280px; margin: 0 auto; padding: 0 56px; }
+    .container-narrow { max-width: 960px;  margin: 0 auto; padding: 0 56px; }
+    .container-mid    { max-width: 1040px; margin: 0 auto; padding: 0 56px; }
+    section { padding: 140px 0; }
+    @media (max-width: 680px) {
+      .container, .container-narrow, .container-mid { padding: 0 28px; }
+      section { padding: 96px 0; }
+    }
+
+
+/* ── SECTION 2: TRANSITION ── */
+    .transition-section {
+      background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('images/vintage-tiles.png') center/cover no-repeat;
+      padding: 120px 0;
+    }
+    .transition-inner { text-align: center; }
+    .transition-logo {
+      height: clamp(120px, 18vw, 260px);
+      width: auto;
+      display: block;
+      margin: 0 auto 20px;
+      mix-blend-mode: multiply;
+    }
+    .ts-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400; line-height: 1.15;
+      color: var(--navy); margin-bottom: 36px;
+    }
+    .ts-rule {
+      width: 48px; height: 2px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+    .ts-intro {
+      font-size: 18px; font-weight: 300;
+      color: var(--slate); line-height: 1.8;
+      max-width: 680px; margin: 0 auto 48px;
+    }
+    .ts-three {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      text-align: left;
+      margin-top: 16px;
+    }
+    @media (max-width: 680px) { .ts-three { grid-template-columns: 1fr; gap: 32px; } }
+    .ts-block h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px; font-weight: 500;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .ts-block p {
+      font-size: 15px; font-weight: 300;
+      color: var(--slate); line-height: 1.75;
+    }
+    .ts-block-rule {
+      width: 32px; height: 2px;
+      background: var(--gold);
+      margin-bottom: 14px;
+    }
+
+
+    /* ── SECTION 3: PRODUCT PROOF ── */
+    .product-section { background: var(--bg); }
+    .product-grid {
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 80px; align-items: center;
+    }
+    @media (max-width: 900px) { .product-grid { grid-template-columns: 1fr; gap: 56px; } }
+
+    .product-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; display: block;
+    }
+    .product-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 400; line-height: 1.2;
+      color: var(--navy); margin-bottom: 20px;
+    }
+    .product-body {
+      font-size: 16px; font-weight: 300;
+      color: var(--slate); line-height: 1.75;
+    }
+    .product-screenshot {
+      position: relative;
+    }
+
+    /* ── Two-phone screenshot layout ── */
+    .phones-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      justify-content: center;
+      position: relative;
+    }
+    .phone-frame {
+      background: #1a2230;
+      border-radius: 36px;
+      padding: 10px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.07),
+        0 8px 32px rgba(0,0,0,.35),
+        0 32px 80px rgba(0,0,0,.2);
+      flex-shrink: 0;
+    }
+    .phone-frame img {
+      display: block;
+      border-radius: 28px;
+      width: 195px;
+    }
+    .phone-label {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+    .phone-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* Arrow + annotation between phones */
+    .phones-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      margin-top: 80px;
+      flex-shrink: 0;
+      gap: 6px;
+    }
+    .arrow-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      line-height: 1.4;
+      max-width: 80px;
+    }
+    .arrow-icon {
+      font-size: 24px;
+      color: var(--gold);
+      line-height: 1;
+    }
+    /* Tap cue badge on the collapsed phone */
+    .tap-cue {
+      position: absolute;
+      top: 118px;
+      right: -14px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+      letter-spacing: .03em;
+    }
+
+    .product-caption {
+      text-align: center; margin-top: 64px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px; font-weight: 400; font-style: italic;
+      color: var(--slate);
+    }
+
+
+    /* ── SECTION 4: WHY THIS MATTERS ── */
+    .why-section { background: var(--navy); }
+    .why-center { text-align: center; margin-bottom: 80px; }
+    .why-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(38px, 4.5vw, 62px);
+      font-weight: 400; color: var(--white);
+      margin-bottom: 24px;
+    }
+    .why-intro {
+      font-size: 18px; font-weight: 300;
+      color: rgba(255,255,255,.55); line-height: 1.75;
+      max-width: 680px; margin: 0 auto;
+    }
+    .why-intro br { display: block; margin-bottom: 4px; }
+    .editorial-three {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 64px; margin-bottom: 80px;
+    }
+    @media (max-width: 760px) { .editorial-three { grid-template-columns: 1fr; gap: 48px; } }
+    .editorial-block {}
+    .eb-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px; font-weight: 400;
+      color: var(--gold); opacity: .55;
+      display: block; margin-bottom: 20px; line-height: 1;
+    }
+    .editorial-block h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 21px; font-weight: 500;
+      color: var(--white); margin-bottom: 14px; line-height: 1.3;
+    }
+    .editorial-block p {
+      font-size: 15px; font-weight: 300;
+      color: rgba(255,255,255,.5); line-height: 1.75;
+    }
+    .why-kicker {
+      text-align: center;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 32px; font-style: italic; font-weight: 400;
+      color: rgba(255,255,255,.5);
+    }
+
+
+    /* ── SECTION 5: WHEN TO USE ── */
+    .when-section {
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .when-section::before,
+    .when-section::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 480px;
+      height: 480px;
+      background: url('.claude/mahjong IQ tile front facing.png') center/contain no-repeat;
+      opacity: 0.09;
+      pointer-events: none;
+    }
+    .when-section::before { left: 40px; transform: translateY(-50%) rotate(-12deg); }
+    .when-section::after  { right: 40px; transform: translateY(-50%) rotate(12deg); }
+    .when-center { text-align: center; margin-bottom: 64px; }
+    .when-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(30px, 3.5vw, 46px);
+      font-weight: 400; color: var(--navy);
+    }
+    .when-split {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 760px) {
+      .when-split { grid-template-columns: 1fr; gap: 48px; }
+      .when-divider { display: none; }
+    }
+    .when-divider {
+      width: 1px;
+      background: var(--border);
+      align-self: stretch;
+    }
+    .when-col h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px; font-weight: 500;
+      color: var(--navy); margin-bottom: 16px; line-height: 1.3;
+    }
+    .when-col p {
+      font-size: 16px; font-weight: 300;
+      color: var(--slate); line-height: 1.8;
+    }
+    .when-col-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px; display: block;
+    }
+
+
+    /* ── FINAL CTA ── */
+    .final-section { background: var(--navy); padding: 140px 0; text-align: center; }
+    .final-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 400; color: var(--white);
+      line-height: 1.15; margin-bottom: 24px;
+    }
+    .final-body {
+      font-size: 17px; font-weight: 300;
+      color: rgba(255,255,255,.5);
+      max-width: 480px; margin: 0 auto 48px;
+      line-height: 1.75;
+    }
+    .final-fine {
+      margin-top: 20px; font-size: 12px;
+      color: rgba(255,255,255,.22); letter-spacing: .06em;
+    }
+
+
+    /* ── FOOTER ── */
+    footer {
+      background: #151E28; padding: 48px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 14px; text-decoration: none;
+    }
+    .footer-brand img { height: 52px; width: auto; }
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 400;
+      color: rgba(255,255,255,.75);
+    }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a {
+      font-size: 11.5px; font-weight: 400; letter-spacing: .06em;
+      text-transform: uppercase; color: rgba(255,255,255,.25);
+      text-decoration: none; transition: color .15s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,.6); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,.18); }
+    @media (max-width: 680px) {
+      .footer-inner { flex-direction: column; gap: 20px; padding: 0 28px; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+    }
+
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-up {
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal-up.in { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img class="nav-brand-icon" src=".claude/mahjong IQ tile front facing.png" alt="Mahjong IQ" />
+      <span class="nav-brand-name">Mahjong IQ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="get-started.html" class="nav-btn">Analyze Your Hand</a>
+  </div>
+</nav>
+
+
+<!-- ── HERO ── -->
+<!--
+  SWAP IN YOUR LIFESTYLE IMAGE:
+  Replace the .hero background with:
+    background-image:
+      linear-gradient(to right, rgba(25,36,50,.82) 35%, rgba(25,36,50,.5) 100%),
+      url('hero-lifestyle.jpg');
+    background-size: cover;
+    background-position: center;
+-->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Strategy begins before the first draw</span>
+      <h1>
+        You know how to play.<br>
+        Now <span class="gold">play to win.</span>
+      </h1>
+      <p class="hero-subhead">Start with a strategy before the first tile is thrown.</p>
+      <p class="hero-support">See your best hand options based on your tiles—instantly.</p>
+      <div class="hero-actions">
+        <a href="get-started.html" class="btn-primary gold">Analyze Your Hand</a>
+        <a href="#product" class="btn-ghost">See How It Works</a>
+      </div>
+      <p class="hero-fine">No account needed. Works on mobile.</p>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="scroll-line"></span>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ── SECTION 2: TRANSITION ── -->
+<section class="transition-section" id="how-it-works">
+  <div class="container-narrow">
+    <div class="transition-inner reveal">
+      <img src="logo-new.png" alt="Mahjong IQ" class="transition-logo" />
+      <h2 class="ts-heading">From dozens of possibilities<br>to three clear paths.</h2>
+      <div class="ts-rule"></div>
+      <p class="ts-intro">You get your tiles and suddenly you're faced with deciding which direction to pursue — all while navigating a game that changes with every draw, discard, and exposure.<br><br>Mahjong IQ helps you cut through the noise by identifying your strongest hand options from the start, so you know what to watch for, what to discard, and when it's time to pivot.</p>
+      <div class="ts-three">
+        <div class="ts-block">
+          <div class="ts-block-rule"></div>
+          <h4>Eliminate Overwhelm</h4>
+          <p>No more scanning the entire card and trying to evaluate every possibility.</p>
+        </div>
+        <div class="ts-block">
+          <div class="ts-block-rule"></div>
+          <h4>Focus Your Attention</h4>
+          <p>Know exactly which hands to watch as the game unfolds.</p>
+        </div>
+        <div class="ts-block">
+          <div class="ts-block-rule"></div>
+          <h4>Enjoy the Game More</h4>
+          <p>Spend less time second-guessing your decisions and more time enjoying the strategy, excitement, and social side of Mahjong.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 3: PRODUCT PROOF ── -->
+<section class="product-section" id="product">
+  <div class="container-mid">
+    <div class="product-grid">
+
+      <!-- Text side -->
+      <div class="reveal">
+        <span class="product-label">See it in action</span>
+        <h2 class="product-heading">Your top hands, ranked and explained.</h2>
+        <p class="product-body">Enter your tiles and instantly see your top 3 hand options. Each hand is ranked by how well it fits — based on how many of your tiles already support it, and how difficult it will be to get the remaining tiles to complete the hand.</p>
+        <p class="product-body" style="margin-top:20px;">Tap <strong style="color:var(--navy);font-weight:600;">See Why</strong> on any hand to go deeper:</p>
+        <ul style="margin-top:12px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:15px;font-weight:300;color:var(--slate);line-height:1.6;padding-left:16px;border-left:2px solid var(--gold);"><strong style="color:var(--navy);font-weight:600;">What you have &amp; what you need</strong> — tile by tile, with progress on each group</li>
+          <li style="font-size:15px;font-weight:300;color:var(--slate);line-height:1.6;padding-left:16px;border-left:2px solid var(--gold);"><strong style="color:var(--navy);font-weight:600;">Ready to call</strong> — which parts of the hand you can already claim from a discard</li>
+        </ul>
+        <p class="product-body" style="margin-top:24px;">The analyzer also gives you:</p>
+        <ul style="margin-top:12px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:15px;font-weight:300;color:var(--slate);line-height:1.6;padding-left:16px;border-left:2px solid var(--border);"><strong style="color:var(--navy);font-weight:600;">Next 3 best hands</strong> — your next strongest options if your top picks don't develop</li>
+          <li style="font-size:15px;font-weight:300;color:var(--slate);line-height:1.6;padding-left:16px;border-left:2px solid var(--border);"><strong style="color:var(--navy);font-weight:600;">Best discard</strong> — the tile most likely to slow you down</li>
+          <li style="font-size:15px;font-weight:300;color:var(--slate);line-height:1.6;padding-left:16px;border-left:2px solid var(--border);"><strong style="color:var(--navy);font-weight:600;">Pivot hands</strong> — if you start pulling certain tiles as the game unfolds, these hands come into play</li>
+        </ul>
+      </div>
+
+      <!-- Product screenshots — real app -->
+      <div class="product-screenshot reveal">
+        <div class="phones-wrap">
+
+          <!-- Left phone: collapsed view -->
+          <div class="phone-col">
+            <div class="phone-frame" style="position:relative;">
+              <img src="analyzer result 2.png" alt="Top 3 hands ranked" />
+              <span class="tap-cue">Tap "See Why" ↓</span>
+            </div>
+            <div class="phone-label">Your top 3 hands</div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="phones-arrow">
+            <div class="arrow-label">Tap to expand</div>
+            <div class="arrow-icon">→</div>
+          </div>
+
+          <!-- Right phone: expanded view -->
+          <div class="phone-col">
+            <div class="phone-frame">
+              <img src="analyzer result.png" alt="Expanded hand detail" />
+            </div>
+            <div class="phone-label">Full detail & guidance</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── SECTION 4: WHY THIS MATTERS ── -->
+<section class="why-section">
+  <div class="container-mid">
+    <div class="why-center reveal">
+      <h2 class="why-heading">Why this matters</h2>
+      <p class="why-intro">
+        Mahjong is part luck, part strategy.<br>
+        Clarity at the start changes how you play.
+      </p>
+    </div>
+
+    <div class="editorial-three">
+      <div class="editorial-block reveal-up">
+        <span class="eb-num">01</span>
+        <h3>See options you might not have considered</h3>
+        <p>Discover strong hand paths beyond the obvious.</p>
+      </div>
+      <div class="editorial-block reveal-up">
+        <span class="eb-num">02</span>
+        <h3>Focus on what actually fits your tiles</h3>
+        <p>Choose hands that are realistic—not just familiar.</p>
+      </div>
+      <div class="editorial-block reveal-up">
+        <span class="eb-num">03</span>
+        <h3>Get better every time you use it</h3>
+        <p>Train your instincts and learn the card as you play.</p>
+      </div>
+    </div>
+
+    <p class="why-kicker reveal">The more you use it, the less you'll need it.</p>
+  </div>
+</section>
+
+
+<!-- ── SECTION 5: WHEN TO USE IT ── -->
+<section class="when-section" id="when">
+  <div class="container-mid">
+    <div class="when-center reveal">
+      <h2 class="when-heading">When to use it</h2>
+    </div>
+    <div class="when-split">
+
+      <div class="when-col reveal">
+        <span class="when-col-label">Playing on your own</span>
+        <h3>Practice. Compare. Improve.</h3>
+        <p>Pick tiles at random, look at your card, and choose the hand you'd play. Then enter those tiles into the analyzer and see how your answer compares. A great way for new players to learn the card faster — and for experienced players to sharpen their instincts.</p>
+      </div>
+
+      <div class="when-divider"></div>
+
+      <div class="when-col reveal">
+        <span class="when-col-label">Playing with a group</span>
+        <h3>Learn Together. Play Together.</h3>
+        <p>This app is great for group play when everyone has access. Enter your tiles at the start of the game and begin with a clear strategy from the first draw. Perfect for tables of newer players learning and improving together.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FINAL CTA ── -->
+<section class="final-section" id="faq">
+  <div class="container-narrow">
+    <div class="reveal">
+      <h2 class="final-heading">Start your next game<br>with a strategy.</h2>
+      <p class="final-body">See your best hand options in seconds — and play with confidence from the first move.</p>
+      <div style="display:inline-block;background:rgba(184,154,91,.15);border:1px solid rgba(184,154,91,.35);border-radius:8px;padding:16px 32px;margin-bottom:36px;">
+        <p style="font-size:16px;font-weight:500;color:var(--gold);letter-spacing:.02em;">Try it free — 3 analyses on us.</p>
+        <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,.5);margin-top:4px;">Unlock unlimited access for $14.99 — one time, no subscription.</p>
+      </div>
+      <br>
+      <a href="get-started.html" class="btn-primary gold">Analyze Your Hand</a>
+      <p class="final-fine">No account needed. Works on mobile.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-brand">
+      <span class="footer-brand-name">Mahjong IQ</span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="get-started.html">Get Started</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 Mahjong IQ</p>
+  </div>
+</footer>
+
+
+<script>
+  // Nav transparency → solid on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-up').forEach((el, i) => {
+    const parent = el.closest('.editorial-three, .when-cards');
+    if (parent) {
+      const siblings = [...parent.querySelectorAll('.reveal-up, .reveal')];
+      el.style.transitionDelay = `${siblings.indexOf(el) * 100}ms`;
+    }
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
