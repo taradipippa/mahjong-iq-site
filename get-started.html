@@ -29,7 +29,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -75,32 +75,39 @@
       gap: 32px;
     }
     .nav-brand {
-      display: flex; align-items: center; gap: 11px;
-      text-decoration: none; color: var(--white); flex-shrink: 0;
+      display: flex; align-items: center;
+      text-decoration: none; flex-shrink: 0;
     }
     nav.scrolled .nav-brand { color: var(--navy); }
-    .nav-brand-icon { height: 36px; width: auto; display: block; }
+    .nav-brand-icon { display: none; }
     .nav-brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px; font-weight: 500; letter-spacing: 0.01em;
+      display: block;
+      font-family: 'Cormorant SC', serif;
+      font-size: 24px; font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--white);
     }
-    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    nav.scrolled .nav-brand-name { color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 16px; list-style: none; }
     .nav-links a {
-      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; color: rgba(255,255,255,.65);
-      text-decoration: none; transition: color .15s;
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 10px 24px; border-radius: 3px;
+      border: 1px solid rgba(255,255,255,.4); color: rgba(255,255,255,.85);
+      transition: all .18s; white-space: nowrap;
     }
-    nav.scrolled .nav-links a { color: var(--slate); }
-    .nav-links a:hover { color: white; }
-    nav.scrolled .nav-links a:hover { color: var(--navy); }
+    nav.scrolled .nav-links a { border-color: var(--border); color: var(--slate); }
+    .nav-links a:hover { border-color: white; color: white; }
+    nav.scrolled .nav-links a:hover { border-color: var(--navy); color: var(--navy); }
     .nav-btn {
       font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
       text-transform: uppercase; text-decoration: none;
       padding: 10px 24px; border-radius: 3px;
       background: var(--gold); color: var(--navy);
+      border: 1px solid var(--gold);
       transition: all .18s; white-space: nowrap;
     }
-    .nav-btn:hover { background: #A88A4A; }
+    .nav-btn:hover { background: #A88A4A; border-color: #A88A4A; }
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .nav-inner { padding: 0 28px; }
@@ -134,7 +141,7 @@
       margin-bottom: 24px; display: block;
     }
     .hero-h1 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: clamp(40px, 5.5vw, 72px);
       font-weight: 400; line-height: 1.1;
       color: var(--white); margin-bottom: 22px;
@@ -146,7 +153,7 @@
       max-width: 520px; margin-left: auto; margin-right: auto;
     }
     .hero-sub em {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-style: italic; font-size: 19px;
       color: rgba(255,255,255,.38);
       font-weight: 400;
@@ -254,13 +261,13 @@
     .how-step:first-child { padding-left: 0; }
     .how-step:last-child  { border-right: none; padding-right: 0; }
     .how-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: 40px; font-weight: 400;
       color: var(--gold-lt); line-height: 1;
       display: block; margin-bottom: 14px;
     }
     .how-step h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: 18px; font-weight: 400;
       color: var(--navy); margin-bottom: 8px;
     }
@@ -290,7 +297,7 @@
       margin-bottom: 18px; display: block;
     }
     .section-h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: clamp(28px, 3.5vw, 44px);
       font-weight: 400; line-height: 1.18;
       color: var(--navy); margin-bottom: 10px;
@@ -327,7 +334,7 @@
       margin-bottom: 8px;
     }
     .price-amount {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: 60px; font-weight: 400;
       color: var(--white); line-height: 1;
       letter-spacing: -0.01em;
@@ -406,7 +413,7 @@
       margin-bottom: 28px;
     }
     .access-h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: clamp(28px, 3.5vw, 42px);
       font-weight: 400; line-height: 1.18;
       color: var(--white); margin-bottom: 14px;
@@ -446,7 +453,7 @@
       display: block; margin-bottom: 4px;
     }
     .faq-hs-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: 17px; font-weight: 500;
       color: var(--navy); margin-bottom: 4px;
     }
@@ -492,7 +499,7 @@
       max-width: 640px; margin: 0 auto; padding: 0 56px;
     }
     .faq-h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: clamp(24px, 3vw, 34px);
       font-weight: 400; color: var(--navy);
       margin-bottom: 48px; text-align: center;
@@ -538,7 +545,7 @@
     }
     .footer-brand img { height: 28px; width: auto; opacity: .7; }
     .footer-brand span {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: 15px; font-weight: 500; color: rgba(255,255,255,.4);
     }
     .footer-links { display: flex; gap: 32px; list-style: none; }
@@ -568,14 +575,13 @@
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
-      <img src="mahjong-IQ-tile-front-facing.png" alt="Mahjong IQ" class="nav-brand-icon" />
+      <img src="logo-new.png" alt="Mahjong IQ" class="nav-brand-icon" />
       <span class="nav-brand-name">Mahjong IQ</span>
     </a>
     <ul class="nav-links">
       <li><a href="how-it-works.html">How It Works</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="get-started.html" class="nav-btn">Analyze Your Hand</a></li>
     </ul>
-    <a href="get-started.html" class="nav-btn">Get Started</a>
   </div>
 </nav>
 
@@ -793,7 +799,6 @@
     </a>
     <ul class="footer-links">
       <li><a href="how-it-works.html">How It Works</a></li>
-      <li><a href="about.html">About</a></li>
       <li><a href="get-started.html">Get Started</a></li>
     </ul>
     <span class="footer-copy">© 2026 Mahjong IQ</span>
