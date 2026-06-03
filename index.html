@@ -30,7 +30,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -75,33 +75,39 @@
       gap: 32px;
     }
     .nav-brand {
-      display: flex; align-items: center; gap: 11px;
-      text-decoration: none; color: var(--white); flex-shrink: 0;
+      display: flex; align-items: center;
+      text-decoration: none; flex-shrink: 0;
     }
     nav.scrolled .nav-brand { color: var(--navy); }
-    .nav-brand-icon { height: 36px; width: auto; display: block; }
+    .nav-brand-icon { display: none; }
     .nav-brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px; font-weight: 500;
-      letter-spacing: 0.01em;
+      display: block;
+      font-family: 'Cormorant SC', serif;
+      font-size: 24px; font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--white);
     }
-    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    nav.scrolled .nav-brand-name { color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 16px; list-style: none; }
     .nav-links a {
-      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; color: rgba(255,255,255,.65);
-      text-decoration: none; transition: color .15s;
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 10px 24px; border-radius: 3px;
+      border: 1px solid rgba(255,255,255,.4); color: rgba(255,255,255,.85);
+      transition: all .18s; white-space: nowrap;
     }
-    nav.scrolled .nav-links a { color: var(--slate); }
-    .nav-links a:hover { color: white; }
-    nav.scrolled .nav-links a:hover { color: var(--navy); }
+    nav.scrolled .nav-links a { border-color: var(--border); color: var(--slate); }
+    .nav-links a:hover { border-color: white; color: white; }
+    nav.scrolled .nav-links a:hover { border-color: var(--navy); color: var(--navy); }
     .nav-btn {
       font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
       text-transform: uppercase; text-decoration: none;
       padding: 10px 24px; border-radius: 3px;
       background: var(--gold); color: var(--navy);
+      border: 1px solid var(--gold);
       transition: all .18s; white-space: nowrap;
     }
-    .nav-btn:hover { background: #A88A4A; }
+    .nav-btn:hover { background: #A88A4A; border-color: #A88A4A; }
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .nav-inner { padding: 0 28px; }
@@ -148,7 +154,7 @@
       margin-bottom: 28px; display: block;
     }
     .hero h1 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: clamp(48px, 6vw, 84px);
       font-weight: 400; line-height: 1.08;
       letter-spacing: -0.01em;
@@ -230,7 +236,7 @@
       mix-blend-mode: multiply;
     }
     .ts-heading {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: clamp(32px, 4vw, 52px);
       font-weight: 400; line-height: 1.15;
       color: var(--navy); margin-bottom: 36px;
@@ -254,7 +260,7 @@
     }
     @media (max-width: 680px) { .ts-three { grid-template-columns: 1fr; gap: 32px; } }
     .ts-block h4 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: 18px; font-weight: 500;
       color: var(--navy); margin-bottom: 10px;
     }
@@ -283,7 +289,7 @@
       margin-bottom: 20px; display: block;
     }
     .product-heading {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: clamp(30px, 3.5vw, 44px);
       font-weight: 400; line-height: 1.2;
       color: var(--navy); margin-bottom: 20px;
@@ -377,7 +383,7 @@
 
     .product-caption {
       text-align: center; margin-top: 64px;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: 18px; font-weight: 400; font-style: italic;
       color: var(--slate);
     }
@@ -387,7 +393,7 @@
     .why-section { background: var(--navy); }
     .why-center { text-align: center; margin-bottom: 80px; }
     .why-heading {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: clamp(38px, 4.5vw, 62px);
       font-weight: 400; color: var(--white);
       margin-bottom: 24px;
@@ -405,13 +411,13 @@
     @media (max-width: 760px) { .editorial-three { grid-template-columns: 1fr; gap: 48px; } }
     .editorial-block {}
     .eb-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: 52px; font-weight: 400;
       color: var(--gold); opacity: .55;
       display: block; margin-bottom: 20px; line-height: 1;
     }
     .editorial-block h3 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: 21px; font-weight: 500;
       color: var(--white); margin-bottom: 14px; line-height: 1.3;
     }
@@ -421,7 +427,7 @@
     }
     .why-kicker {
       text-align: center;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: 32px; font-style: italic; font-weight: 400;
       color: rgba(255,255,255,.5);
     }
@@ -448,7 +454,7 @@
     .when-section::after  { right: 40px; transform: translateY(-50%) rotate(12deg); }
     .when-center { text-align: center; margin-bottom: 64px; }
     .when-heading {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: clamp(30px, 3.5vw, 46px);
       font-weight: 400; color: var(--navy);
     }
@@ -468,7 +474,7 @@
       align-self: stretch;
     }
     .when-col h3 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: 24px; font-weight: 500;
       color: var(--navy); margin-bottom: 16px; line-height: 1.3;
     }
@@ -486,7 +492,7 @@
     /* ── FINAL CTA ── */
     .final-section { background: var(--navy); padding: 140px 0; text-align: center; }
     .final-heading {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant SC', Georgia, serif;
       font-size: clamp(36px, 5vw, 64px);
       font-weight: 400; color: var(--white);
       line-height: 1.15; margin-bottom: 24px;
@@ -518,7 +524,7 @@
     }
     .footer-brand img { height: 52px; width: auto; }
     .footer-brand-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant SC', serif;
       font-size: 22px; font-weight: 400;
       color: rgba(255,255,255,.75);
     }
@@ -555,13 +561,13 @@
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-brand">
-      <img class="nav-brand-icon" src="mahjong-IQ-tile-front-facing.png" alt="Mahjong IQ" />
+      <img class="nav-brand-icon" src="logo-new.png" alt="Mahjong IQ" />
       <span class="nav-brand-name">Mahjong IQ</span>
     </a>
     <ul class="nav-links">
       <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="get-started.html" class="nav-btn">Analyze Your Hand</a></li>
     </ul>
-    <a href="get-started.html" class="nav-btn">Analyze Your Hand</a>
   </div>
 </nav>
 
