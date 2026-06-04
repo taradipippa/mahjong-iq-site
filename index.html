@@ -531,11 +531,14 @@
     .footer-links { display: flex; gap: 28px; list-style: none; }
     .footer-links a {
       font-size: 11.5px; font-weight: 400; letter-spacing: .06em;
-      text-transform: uppercase; color: rgba(255,255,255,.25);
+      text-transform: uppercase; color: rgba(255,255,255,.55);
       text-decoration: none; transition: color .15s;
     }
-    .footer-links a:hover { color: rgba(255,255,255,.6); }
-    .footer-copy { font-size: 11px; color: rgba(255,255,255,.18); }
+    .footer-links a:hover { color: rgba(255,255,255,.85); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,.55); }
+    .footer-credit { font-size: 11px; color: rgba(255,255,255,.55); }
+    .footer-credit a { color: rgba(255,255,255,.55); text-decoration: underline; transition: color .15s; }
+    .footer-credit a:hover { color: rgba(255,255,255,.85); }
     @media (max-width: 680px) {
       .footer-inner { flex-direction: column; gap: 20px; padding: 0 28px; }
       .footer-links { flex-wrap: wrap; gap: 16px; }
@@ -782,10 +785,9 @@
     </a>
     <ul class="footer-links">
       <li><a href="how-it-works.html">How It Works</a></li>
-      <li><a href="about.html">About</a></li>
       <li><a href="get-started.html">Get Started</a></li>
     </ul>
-    <p class="footer-copy">&copy; 2026 Mahjong IQ</p>
+    <p class="footer-copy">&copy; 2026 Mahjong IQ &nbsp;|&nbsp; <span class="footer-credit">Site by <a href="https://www.intuitiveadvantagemarketing.com" target="_blank" rel="noopener">Intuitive Advantage Marketing</a></span></p>
   </div>
 </footer>
 
