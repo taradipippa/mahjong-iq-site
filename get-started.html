@@ -51,6 +51,7 @@
     }
 
     html { scroll-behavior: smooth; }
+    html, body { overflow-x: hidden; max-width: 100%; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
@@ -108,9 +109,44 @@
       transition: all .18s; white-space: nowrap;
     }
     .nav-btn:hover { background: #A88A4A; border-color: #A88A4A; }
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; background: none; border: none; cursor: pointer;
+      padding: 8px; margin-left: auto;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: all .2s;
+    }
+    nav.scrolled .hamburger span { background: var(--navy); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; flex-direction: column;
+      background: rgba(244,245,247,0.98); backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-lt);
+      padding: 16px 28px 24px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--slate); padding: 14px 0;
+      border-bottom: 1px solid var(--border-lt);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .nav-btn {
+      margin-top: 12px; text-align: center;
+      background: var(--gold); color: var(--navy);
+      border-radius: 3px; padding: 14px 24px;
+      border: none;
+    }
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .nav-inner { padding: 0 28px; }
+      .hamburger { display: flex; }
     }
 
     /* ── HERO ── */
@@ -674,7 +710,16 @@
     }
     @media (max-width: 680px) {
       .faq-section { padding: 72px 0; }
-      .faq-inner { padding: 0 24px; }
+      .faq-inner { padding: 0 20px; }
+      /* Global mobile padding */
+      .gs-hero-inner, .how-strip-inner, .pricing-inner,
+      .after-purchase-inner, .access-inner { padding-left: 20px; padding-right: 20px; }
+      /* Stack pricing features nicely */
+      .ap-steps { grid-template-columns: 1fr; }
+      .hs-strip { grid-template-columns: 1fr; }
+      .hs-screenshots { gap: 8px; }
+      /* Hero buttons full width */
+      .btn-try, .btn-buy { width: 100%; text-align: center; }
     }
 
     /* ── FOOTER ── */
@@ -733,6 +778,13 @@
       <li><a href="how-it-works.html">How It Works</a></li>
       <li><a href="get-started.html" class="nav-btn">Analyze Your Hand</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="how-it-works.html">How It Works</a>
+    <a href="get-started.html" class="nav-btn">Analyze Your Hand</a>
   </div>
 </nav>
 
@@ -1048,7 +1100,6 @@
 <footer>
   <div class="footer-inner">
     <a href="index.html" class="footer-brand">
-      <img src="mahjong-IQ-tile-front-facing.png" alt="Mahjong IQ" />
       <span>Mahjong IQ</span>
     </a>
     <ul class="footer-links">
@@ -1202,6 +1253,13 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
+
+  /* ── Hamburger menu ── */
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobileMenu').classList.toggle('open');
+    nav.classList.add('scrolled');
+  }
 
   /* ── Scroll reveal ── */
   const observer = new IntersectionObserver(entries => {
