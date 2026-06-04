@@ -158,6 +158,11 @@
       color: var(--gold);
       line-height: 1.4; margin-bottom: 0;
     }
+    .page-hero-subhead {
+      font-size: 18px; font-weight: 300;
+      color: rgba(255,255,255,.92);
+      line-height: 1.7; margin-top: 20px;
+    }
     .page-hero-right { margin-top: 48px; }
     .hero-rule {
       width: 40px; height: 1px;
@@ -166,12 +171,12 @@
     }
     .page-hero-body {
       font-size: 18px; font-weight: 300;
-      color: rgba(255,255,255,.62);
+      color: rgba(255,255,255,.92);
       line-height: 1.75; margin-bottom: 20px;
     }
     .page-hero-brand {
       font-size: 18px; font-weight: 400;
-      color: rgba(255,255,255,.85);
+      color: rgba(255,255,255,.92);
       line-height: 1.75;
     }
     .page-hero-brand strong {
@@ -230,7 +235,7 @@
     /* Step with visual: 2-col grid */
     .step-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 80px; align-items: center;
     }
     .step-grid.flip { direction: rtl; }
@@ -344,6 +349,27 @@
       color: var(--slate-lt);
       font-size: 12px; letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+    .step-screenshot {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .step-screenshot .phone-frame {
+      background: #1a2230;
+      border-radius: 36px;
+      padding: 10px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.07),
+        0 8px 32px rgba(0,0,0,.35),
+        0 32px 80px rgba(0,0,0,.2);
+      flex-shrink: 0;
+    }
+    .step-screenshot .phone-frame img {
+      display: block;
+      border-radius: 28px;
+      width: 220px;
+      height: auto;
     }
 
     /* Step 4 learning list */
@@ -784,13 +810,16 @@
     }
     .footer-links a {
       font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; color: rgba(255,255,255,.25);
+      text-transform: uppercase; color: rgba(255,255,255,.55);
       text-decoration: none; transition: color .15s;
     }
-    .footer-links a:hover { color: rgba(255,255,255,.5); }
+    .footer-links a:hover { color: rgba(255,255,255,.85); }
     .footer-copy {
-      font-size: 12px; color: rgba(255,255,255,.18);
+      font-size: 12px; color: rgba(255,255,255,.55);
     }
+    .footer-credit { font-size: 11px; color: rgba(255,255,255,.55); }
+    .footer-credit a { color: rgba(255,255,255,.55); text-decoration: underline; transition: color .15s; }
+    .footer-credit a:hover { color: rgba(255,255,255,.85); }
     @media (max-width: 680px) {
       .footer-inner { padding: 0 28px; flex-direction: column; align-items: flex-start; gap: 20px; }
       .footer-links { flex-wrap: wrap; gap: 20px; }
@@ -878,85 +907,10 @@
           </div>
         </div>
 
-        <!-- Tile Selector Mockup -->
-        <div class="mockup-window reveal reveal-delay-2">
-          <div class="mockup-bar">
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-            <span class="mockup-bar-title">Enter Your Tiles</span>
-            <div class="mockup-bar-logo">
-              <img src="mahjong-IQ-tile-front-facing.png" alt="Mahjong IQ" />
-              <span>Hand Analyzer</span>
-            </div>
-          </div>
-          <div class="mockup-body">
-            <div class="tile-section-label">Bam</div>
-            <div class="tile-row">
-              <div class="tile bam selected">1B</div>
-              <div class="tile bam selected">2B</div>
-              <div class="tile bam selected">3B</div>
-              <div class="tile bam">4B</div>
-              <div class="tile bam">5B</div>
-              <div class="tile bam">6B</div>
-              <div class="tile bam">7B</div>
-              <div class="tile bam">8B</div>
-              <div class="tile bam">9B</div>
-            </div>
-            <div class="tile-section-label">Crak</div>
-            <div class="tile-row">
-              <div class="tile crak">1C</div>
-              <div class="tile crak">2C</div>
-              <div class="tile crak selected">3C</div>
-              <div class="tile crak selected">3C</div>
-              <div class="tile crak">4C</div>
-              <div class="tile crak">5C</div>
-              <div class="tile crak">6C</div>
-              <div class="tile crak">7C</div>
-              <div class="tile crak">8C</div>
-              <div class="tile crak">9C</div>
-            </div>
-            <div class="tile-section-label">Dot</div>
-            <div class="tile-row">
-              <div class="tile dot">1D</div>
-              <div class="tile dot">2D</div>
-              <div class="tile dot">3D</div>
-              <div class="tile dot selected">5D</div>
-              <div class="tile dot selected">5D</div>
-              <div class="tile dot">6D</div>
-              <div class="tile dot">7D</div>
-              <div class="tile dot">8D</div>
-              <div class="tile dot">9D</div>
-            </div>
-            <div class="tile-section-label">Honors &amp; Specials</div>
-            <div class="tile-row">
-              <div class="tile honor">E</div>
-              <div class="tile honor">S</div>
-              <div class="tile honor">W</div>
-              <div class="tile honor">N</div>
-              <div class="tile honor">Red</div>
-              <div class="tile honor">Grn</div>
-              <div class="tile honor">Wht</div>
-              <div class="tile honor selected">🌸</div>
-              <div class="tile honor">⭐</div>
-              <div class="tile joker selected">JKR</div>
-            </div>
-            <div class="selected-hand">
-              <div class="selected-hand-label">Your Hand (13 tiles)</div>
-              <div class="selected-tiles">
-                <div class="tile bam selected" style="width:26px;height:32px;font-size:9px;">1B</div>
-                <div class="tile bam selected" style="width:26px;height:32px;font-size:9px;">2B</div>
-                <div class="tile bam selected" style="width:26px;height:32px;font-size:9px;">3B</div>
-                <div class="tile crak selected" style="width:26px;height:32px;font-size:9px;">3C</div>
-                <div class="tile crak selected" style="width:26px;height:32px;font-size:9px;">3C</div>
-                <div class="tile dot selected" style="width:26px;height:32px;font-size:9px;">5D</div>
-                <div class="tile dot selected" style="width:26px;height:32px;font-size:9px;">5D</div>
-                <div class="tile honor selected" style="width:26px;height:32px;font-size:8px;">🌸</div>
-                <div class="tile joker selected" style="width:26px;height:32px;font-size:8px;">JKR</div>
-              </div>
-            </div>
-            <div class="analyze-btn">Analyze My Hand →</div>
-            <div class="tile-hint">Tap tiles to select · 13 tiles required</div>
+        <!-- Tile Selector Screenshot -->
+        <div class="step-screenshot reveal reveal-delay-2">
+          <div class="phone-frame">
+            <img src="how-it-works-tile-selector.png" alt="Mahjong IQ tile selector — tap tiles to build your hand" />
           </div>
         </div>
       </div>
@@ -1000,72 +954,10 @@
           </div>
         </div>
 
-        <!-- Results Mockup -->
-        <div class="mockup-window reveal reveal-delay-2">
-          <div class="mockup-bar">
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-            <span class="mockup-bar-title">Best Options</span>
-            <div class="mockup-bar-logo">
-              <img src="mahjong-IQ-tile-front-facing.png" alt="Mahjong IQ" />
-              <span>Hand Analyzer</span>
-            </div>
-          </div>
-          <div class="results-header">
-            <span class="results-header-label">Ranked Results</span>
-            <span class="results-header-count">8 options found</span>
-          </div>
-          <div class="hand-result">
-            <span class="hand-rank">01</span>
-            <div class="hand-info">
-              <div class="hand-name">Consecutive Run — Bam</div>
-              <span class="hand-tag tag-priority">Top Priority</span>
-              <div class="hand-detail">6 tiles away · 3 callable · Joker compatible</div>
-            </div>
-            <div class="hand-pct">
-              <div class="pct-num">92%</div>
-              <div class="pct-bar-wrap"><div class="pct-bar" style="width:92%"></div></div>
-            </div>
-          </div>
-          <div class="hand-result">
-            <span class="hand-rank">02</span>
-            <div class="hand-info">
-              <div class="hand-name">Quints — Craks 3</div>
-              <span class="hand-tag tag-priority">Top Priority</span>
-              <div class="hand-detail">7 tiles away · 2 callable · High value</div>
-            </div>
-            <div class="hand-pct">
-              <div class="pct-num">84%</div>
-              <div class="pct-bar-wrap"><div class="pct-bar" style="width:84%"></div></div>
-            </div>
-          </div>
-          <div class="hand-result">
-            <span class="hand-rank">03</span>
-            <div class="hand-info">
-              <div class="hand-name">Flowers — Mixed Set</div>
-              <span class="hand-tag tag-viable">Viable</span>
-              <div class="hand-detail">8 tiles away · 1 callable</div>
-            </div>
-            <div class="hand-pct">
-              <div class="pct-num">71%</div>
-              <div class="pct-bar-wrap"><div class="pct-bar" style="width:71%"></div></div>
-            </div>
-          </div>
-          <div class="hand-result">
-            <span class="hand-rank">04</span>
-            <div class="hand-info">
-              <div class="hand-name">Odds — Any Suit</div>
-              <span class="hand-tag tag-pivot">Pivot</span>
-              <div class="hand-detail">9 tiles away · if Dots arrive</div>
-            </div>
-            <div class="hand-pct">
-              <div class="pct-num">58%</div>
-              <div class="pct-bar-wrap"><div class="pct-bar" style="width:58%"></div></div>
-            </div>
-          </div>
-          <div style="padding:12px 20px; border-top: 1px solid var(--border-lt); text-align:center;">
-            <span style="font-size:11px; color:var(--slate-lt); letter-spacing:0.08em; text-transform:uppercase;">+ 4 more options</span>
+        <!-- Top Hands Screenshot -->
+        <div class="step-screenshot reveal reveal-delay-2">
+          <div class="phone-frame">
+            <img src="how-it-works-top-hands.png" alt="Mahjong IQ ranked results — your strongest hand paths" />
           </div>
         </div>
       </div>
@@ -1107,9 +999,11 @@
           </div>
         </div>
 
-        <!-- Screenshot placeholder — will be replaced with real screenshot -->
-        <div class="mockup-placeholder reveal reveal-delay-2">
-          Screenshot coming soon
+        <!-- See Why Screenshot -->
+        <div class="step-screenshot reveal reveal-delay-2">
+          <div class="phone-frame">
+            <img src="how-it-works-see-why.png" alt="Mahjong IQ hand detail — what you have, what you need, joker placement" />
+          </div>
         </div>
       </div>
     </div><!-- /03 -->
@@ -1137,47 +1031,10 @@
           </div>
         </div>
 
-        <!-- Discard Mockup -->
-        <div class="mockup-window reveal reveal-delay-2">
-          <div class="mockup-bar">
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-            <span class="mockup-bar-title">Suggested Discards</span>
-            <div class="mockup-bar-logo">
-              <img src="mahjong-IQ-tile-front-facing.png" alt="Mahjong IQ" />
-              <span>Hand Analyzer</span>
-            </div>
-          </div>
-          <div class="mockup-body">
-            <div class="discard-label">Your 13 Tiles — Discard Priority</div>
-            <div class="discard-legend">
-              <div class="legend-item"><div class="legend-dot dot-safe"></div> Keep</div>
-              <div class="legend-item"><div class="legend-dot dot-risky"></div> Discard first</div>
-              <div class="legend-item"><div class="legend-dot dot-neutral"></div> Situational</div>
-            </div>
-            <div class="discard-row">
-              <div class="tile bam safe">1B</div>
-              <div class="tile bam safe">2B</div>
-              <div class="tile bam safe">3B</div>
-              <div class="tile crak safe">3C</div>
-              <div class="tile crak safe">3C</div>
-              <div class="tile dot safe">5D</div>
-              <div class="tile dot safe">5D</div>
-              <div class="tile honor safe">🌸</div>
-              <div class="tile joker safe">JKR</div>
-              <div class="tile dot neutral">2D</div>
-              <div class="tile honor neutral">W</div>
-              <div class="tile crak risky">7C</div>
-              <div class="tile dot risky">9D</div>
-            </div>
-            <div class="discard-suggestion">
-              <strong>Discard 7C or 9D first.</strong> Neither tile connects to your top 3 hand paths. Holding either limits your flexibility without improving your strongest options.
-            </div>
-            <div style="margin-top:12px; padding:10px 12px; background:var(--bg); border-radius:4px; border: 1px solid var(--border-lt);">
-              <div style="font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-lt); margin-bottom:6px;">After Discard — Best Position</div>
-              <div style="font-size:12px; color:var(--slate); line-height:1.5;">Consecutive Run (Bam) · 5 tiles away · opens 4 calling opportunities</div>
-            </div>
+        <!-- Discards Screenshot -->
+        <div class="step-screenshot reveal reveal-delay-2">
+          <div class="phone-frame">
+            <img src="how-it-works-discards.png" alt="Mahjong IQ suggested discards — which tiles to drop first" />
           </div>
         </div>
       </div>
@@ -1244,7 +1101,7 @@
       <li><a href="how-it-works.html">How It Works</a></li>
       <li><a href="get-started.html">Get Started</a></li>
     </ul>
-    <span class="footer-copy">© 2026 Mahjong IQ</span>
+    <span class="footer-copy">© 2026 Mahjong IQ &nbsp;|&nbsp; <span class="footer-credit">Site by <a href="https://www.intuitiveadvantagemarketing.com" target="_blank" rel="noopener">Intuitive Advantage Marketing</a></span></span>
   </div>
 </footer>
 
