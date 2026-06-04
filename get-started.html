@@ -393,6 +393,154 @@
       .pricing-card-body { padding: 28px 28px 32px; }
     }
 
+    /* ── AFTER PURCHASE SECTION ── */
+    .after-purchase {
+      background: var(--bg);
+      padding: 100px 0;
+      border-top: 1px solid var(--border-lt);
+    }
+    .after-purchase-inner {
+      max-width: 760px; margin: 0 auto; padding: 0 56px;
+    }
+    .after-purchase-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; text-align: center; margin-bottom: 16px;
+    }
+    .after-purchase-h2 {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 400; color: var(--navy);
+      text-align: center; margin-bottom: 56px; line-height: 1.2;
+    }
+    .ap-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; margin-bottom: 56px;
+    }
+    .ap-step {
+      text-align: center;
+    }
+    .ap-num {
+      font-family: 'Cormorant SC', serif;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.18em;
+      color: var(--gold); display: block; margin-bottom: 14px;
+    }
+    .ap-step h3 {
+      font-family: 'Cormorant SC', serif;
+      font-size: 19px; font-weight: 500;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .ap-step p {
+      font-size: 14px; font-weight: 300;
+      color: var(--slate); line-height: 1.7;
+    }
+    .ap-divider {
+      width: 40px; height: 1px;
+      background: var(--gold); opacity: .4;
+      margin: 0 auto 56px;
+    }
+    /* Access code entry */
+    .code-entry-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 40px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .code-entry-label {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--slate-lt);
+      display: block; margin-bottom: 20px;
+    }
+    .code-entry-row {
+      display: flex; gap: 10px; max-width: 420px; margin: 0 auto 14px;
+    }
+    .code-input {
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px; font-weight: 400;
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .code-input:focus { border-color: var(--gold); }
+    .code-input::placeholder { color: var(--slate-lt); }
+    .btn-unlock {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--navy); color: var(--white);
+      border: none; border-radius: 4px;
+      padding: 12px 22px; cursor: pointer;
+      transition: background .15s; white-space: nowrap;
+    }
+    .btn-unlock:hover { background: var(--navy-lt); }
+    .code-message {
+      font-size: 13px; min-height: 20px;
+      color: var(--slate-lt);
+    }
+    .code-message.success { color: #2A6B4A; font-weight: 500; }
+    .code-message.error   { color: #B04040; }
+    /* Home screen strip */
+    .hs-strip {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .hs-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 28px 24px;
+    }
+    .hs-card-platform {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 4px;
+    }
+    .hs-card-browser {
+      font-family: 'Cormorant SC', serif;
+      font-size: 18px; font-weight: 500;
+      color: var(--navy); margin-bottom: 4px;
+    }
+    .hs-card-note {
+      font-size: 12px; color: var(--slate-lt);
+      font-style: italic; margin-bottom: 20px; line-height: 1.5;
+    }
+    .hs-step {
+      display: flex; gap: 12px; align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .hs-step:last-child { margin-bottom: 0; }
+    .hs-step-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .hs-step-text {
+      font-size: 14px; font-weight: 300;
+      color: var(--slate); line-height: 1.65;
+    }
+    .hs-step-text strong { color: var(--navy); font-weight: 500; }
+    .hs-screenshots {
+      display: flex; gap: 12px; margin-top: 20px;
+    }
+    .hs-screenshots img {
+      width: calc(50% - 6px);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    @media (max-width: 680px) {
+      .after-purchase-inner { padding: 0 24px; }
+      .ap-steps { grid-template-columns: 1fr; gap: 28px; }
+      .hs-strip { grid-template-columns: 1fr; }
+      .code-entry-row { flex-direction: column; }
+    }
+
     /* ── ACCESS SECTION (shown after purchase) ── */
     .access-section {
       background: var(--navy);
@@ -551,11 +699,14 @@
     .footer-links { display: flex; gap: 32px; list-style: none; }
     .footer-links a {
       font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; color: rgba(255,255,255,.25);
+      text-transform: uppercase; color: rgba(255,255,255,.55);
       text-decoration: none; transition: color .15s;
     }
-    .footer-links a:hover { color: rgba(255,255,255,.5); }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,.18); }
+    .footer-links a:hover { color: rgba(255,255,255,.85); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.55); }
+    .footer-credit { font-size: 11px; color: rgba(255,255,255,.55); }
+    .footer-credit a { color: rgba(255,255,255,.55); text-decoration: underline; transition: color .15s; }
+    .footer-credit a:hover { color: rgba(255,255,255,.85); }
     @media (max-width: 680px) {
       .footer-inner { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
       .footer-links { flex-wrap: wrap; gap: 20px; }
@@ -657,17 +808,18 @@
           <span class="price-amount" id="priceDisplay">$14.99</span>
           <span class="price-period">one-time</span>
         </div>
-        <p class="price-tagline">Yours forever — not a subscription.</p>
+        <p class="price-tagline">Unlimited access to the 2026 Hand Analyzer — no expiration, not a subscription.</p>
       </div>
       <div class="pricing-card-body">
         <ul class="pricing-features">
-          <li>Unlimited hand analyses</li>
+          <li>Unlimited hand analyses for the 2026 hands</li>
           <li>All hand categories scored with win probability</li>
           <li>Pivot hand and alternate path recommendations</li>
           <li>Discard guidance</li>
           <li>Works in any browser — no install required</li>
           <li>Add to home screen on iPhone or Android</li>
-          <li>Future updates included</li>
+          <li>Access never expires — yours to keep</li>
+          <li>A 2027 Hand Analyzer will be available separately when the 2027 card is released</li>
         </ul>
         <a href="#" id="buyBtn" class="btn-buy">Buy Now — <span id="btnPrice">$14.99</span></a>
         <p class="pricing-guarantee">
@@ -675,6 +827,104 @@
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ── AFTER PURCHASE / HOME SCREEN ── -->
+<section class="after-purchase">
+  <div class="after-purchase-inner">
+
+    <span class="after-purchase-eyebrow">Unlocking Full Access</span>
+    <h2 class="after-purchase-h2">Ready to go unlimited? Here's how.</h2>
+
+    <div class="ap-steps">
+      <div class="ap-step reveal">
+        <span class="ap-num">01</span>
+        <h3>Purchase</h3>
+        <p>Complete checkout via Stripe. You'll receive a confirmation email with your access code.</p>
+      </div>
+      <div class="ap-step reveal reveal-delay-1">
+        <span class="ap-num">02</span>
+        <h3>Enter Your Code</h3>
+        <p>Come back to this page and enter your access code below to unlock unlimited access.</p>
+      </div>
+      <div class="ap-step reveal reveal-delay-2">
+        <span class="ap-num">03</span>
+        <h3>Play Anywhere</h3>
+        <p>Open the Hand Analyzer in your browser — or add it to your home screen so it's always one tap away.</p>
+      </div>
+    </div>
+
+    <div class="ap-divider"></div>
+
+    <!-- Access code entry -->
+    <div class="code-entry-wrap reveal">
+      <span class="code-entry-label">Already purchased? Enter your access code</span>
+      <div class="code-entry-row">
+        <input type="text" id="accessCodeInput" class="code-input" placeholder="Enter access code" autocomplete="off" autocapitalize="none" />
+        <button class="btn-unlock" onclick="submitAccessCode()">Unlock</button>
+      </div>
+      <p class="code-message" id="codeMessage">Your code was included in your Stripe confirmation email.</p>
+    </div>
+
+    <div class="ap-divider"></div>
+
+    <!-- Home screen instructions -->
+    <p style="text-align:center; font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--slate-lt); margin-bottom:24px;">Add to Home Screen</p>
+    <div class="hs-strip reveal">
+      <div class="hs-card">
+        <span class="hs-card-platform">iPhone</span>
+        <div class="hs-card-browser">Safari</div>
+        <p class="hs-card-note">Must use Safari — other browsers don't support this on iPhone</p>
+        <div class="hs-step">
+          <div class="hs-step-num">1</div>
+          <div class="hs-step-text">Open the Hand Analyzer in <strong>Safari</strong></div>
+        </div>
+        <div class="hs-step">
+          <div class="hs-step-num">2</div>
+          <div class="hs-step-text">Tap the <span class="tap">Share ↑</span> button at the bottom of the screen</div>
+        </div>
+        <div class="hs-step">
+          <div class="hs-step-num">3</div>
+          <div class="hs-step-text">Tap <span class="tap">View More</span> to see all options</div>
+        </div>
+        <div class="hs-step">
+          <div class="hs-step-num">4</div>
+          <div class="hs-step-text">Tap <span class="tap">Add to Home Screen</span></div>
+        </div>
+        <div class="hs-step">
+          <div class="hs-step-num">5</div>
+          <div class="hs-step-text">Tap <span class="tap gold">Add</span> — done</div>
+        </div>
+        <div class="hs-screenshots">
+          <img src="add to home screen 1 final.png" alt="Tap the Share button in Safari" />
+          <img src="add to home screen 2 final.png" alt="Tap View More then Add to Home Screen" />
+        </div>
+      </div>
+      <div class="hs-card">
+        <span class="hs-card-platform">Android</span>
+        <div class="hs-card-browser">Chrome</div>
+        <p class="hs-card-note">Works in Chrome — also in most other Android browsers</p>
+        <div class="hs-step">
+          <div class="hs-step-num">1</div>
+          <div class="hs-step-text">Open the Hand Analyzer in <strong>Chrome</strong></div>
+        </div>
+        <div class="hs-step">
+          <div class="hs-step-num">2</div>
+          <div class="hs-step-text">Tap the <span class="tap">⋮</span> menu in the top right</div>
+        </div>
+        <div class="hs-step">
+          <div class="hs-step-num">3</div>
+          <div class="hs-step-text">Tap <span class="tap">Add to Home screen</span></div>
+        </div>
+        <div class="hs-step">
+          <div class="hs-step-num">4</div>
+          <div class="hs-step-text">Tap <span class="tap gold">Add</span> — done</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -725,10 +975,14 @@
           </div>
           <div class="faq-hs-step">
             <div class="faq-hs-num">3</div>
-            <div class="faq-hs-text">Scroll down and tap <span class="tap">Add to Home Screen</span></div>
+            <div class="faq-hs-text">Tap <span class="tap">View More</span> to see all options</div>
           </div>
           <div class="faq-hs-step">
             <div class="faq-hs-num">4</div>
+            <div class="faq-hs-text">Tap <span class="tap">Add to Home Screen</span></div>
+          </div>
+          <div class="faq-hs-step">
+            <div class="faq-hs-num">5</div>
             <div class="faq-hs-text">Tap <span class="tap gold">Add</span> — done</div>
           </div>
         </div>
@@ -764,7 +1018,7 @@
 
     <details class="faq-item reveal">
       <summary>I got a new phone or cleared my browser. Now what?</summary>
-      <p>Come back to <strong>getmahjongiq.com/get-started.html</strong> first — this page remembers your purchase most of the time and will get you right back in. If you're on a brand new device and it's not recognizing you, just email <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> with your Stripe receipt and I'll restore your access the same day.</p>
+      <p>Come back to <strong>getmahjongiq.com/get-started.html</strong> first — this page remembers your purchase most of the time and will get you right back in. If you're on a brand new device and it's not recognizing you, just email <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> with your Stripe receipt and we'll restore your access.</p>
     </details>
 
     <details class="faq-item reveal">
@@ -774,17 +1028,17 @@
 
     <details class="faq-item reveal">
       <summary>Is this a one-time purchase or a subscription?</summary>
-      <p>One-time. You pay $14.99 once and the Hand Analyzer is yours with no recurring charges, ever.</p>
+      <p>One-time. You pay $14.99 once and get unlimited access to the 2026 Hand Analyzer — no recurring charges, no expiration. It's yours to keep for as long as you want.</p>
     </details>
 
     <details class="faq-item reveal">
       <summary>What happens when next year's hands come out?</summary>
-      <p>The 2026 Hand Analyzer will always work — we'd never take that away from you. When the 2027 card is released, you can purchase the 2027 hands or keep using 2026. Totally your call.</p>
+      <p>Your purchase gives you unlimited access to the 2026 Hand Analyzer for as long as you want — it never expires. When the 2027 hands are released, a 2027 Hand Analyzer will be available for purchase separately. You're never required to upgrade.</p>
     </details>
 
     <details class="faq-item reveal">
       <summary>What's your refund policy?</summary>
-      <p>Because you can try the Hand Analyzer free before you buy, we don't offer refunds as a general policy. That said, if you ran into a technical problem we couldn't solve, reach out at <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> and I'll make it right.</p>
+      <p>Because you can try the Hand Analyzer free before you buy, we don't offer refunds as a general policy. That said, if you ran into a technical problem we couldn't solve, reach out at <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> and we'll make it right.</p>
     </details>
   </div>
 </section>
@@ -801,7 +1055,7 @@
       <li><a href="how-it-works.html">How It Works</a></li>
       <li><a href="get-started.html">Get Started</a></li>
     </ul>
-    <span class="footer-copy">© 2026 Mahjong IQ</span>
+    <span class="footer-copy">© 2026 Mahjong IQ &nbsp;|&nbsp; <span class="footer-credit">Site by <a href="https://www.intuitiveadvantagemarketing.com" target="_blank" rel="noopener">Intuitive Advantage Marketing</a></span></span>
   </div>
 </footer>
 
@@ -902,6 +1156,28 @@
       tryBtn.textContent = 'Analyze Your Hand — Free';
       tryBtn.className = 'btn-try';
       tryNote.textContent = 'Opens in a new tab · No account needed';
+    }
+  }
+
+  /* ── Access code entry handler ── */
+  function submitAccessCode() {
+    const input = document.getElementById('accessCodeInput');
+    const msg   = document.getElementById('codeMessage');
+    const val   = (input.value || '').trim().toLowerCase();
+
+    if (!val) {
+      msg.textContent = 'Please enter your access code.';
+      msg.className = 'code-message error';
+      return;
+    }
+    if (val === ACCESS_CODE.toLowerCase()) {
+      localStorage.setItem(PURCHASE_KEY, 'true');
+      msg.textContent = '✓ Access unlocked! Refreshing…';
+      msg.className = 'code-message success';
+      setTimeout(() => location.reload(), 1000);
+    } else {
+      msg.textContent = 'That code doesn\'t look right. Check your confirmation email and try again.';
+      msg.className = 'code-message error';
     }
   }
 
