@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Mahjong IQ</title>
+  <meta name="description" content="The story behind Mahjong IQ — a strategy tool built for players who want to understand the possibilities hidden in every rack." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F4F5F7;
+      --white:     #FFFFFF;
+      --navy:      #1F2A36;
+      --navy-lt:   #2D3F52;
+      --slate:     #5E6A78;
+      --slate-lt:  #9BA4AF;
+      --gold:      #B89A5B;
+      --gold-lt:   #EDE5CA;
+      --gold-dark: #8B7235;
+      --border:    #DDE0E5;
+      --border-lt: #ECEEF1;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--navy);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    }
+    nav.scrolled {
+      background: rgba(244,245,247,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-lt);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 56px; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 11px;
+      text-decoration: none; color: var(--white); flex-shrink: 0;
+    }
+    nav.scrolled .nav-brand { color: var(--navy); }
+    .nav-brand-icon { height: 36px; width: auto; display: block; }
+    .nav-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 500; letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,.65);
+      text-decoration: none; transition: color .15s;
+    }
+    nav.scrolled .nav-links a { color: var(--slate); }
+    .nav-links a:hover { color: white; }
+    nav.scrolled .nav-links a:hover { color: var(--navy); }
+    .nav-btn {
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 10px 24px; border-radius: 3px;
+      background: var(--gold); color: var(--navy);
+      transition: all .18s; white-space: nowrap;
+    }
+    .nav-btn:hover { background: #A88A4A; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-inner { padding: 0 28px; }
+    }
+
+    /* ── HERO ── */
+    .about-hero {
+      min-height: 100svh;
+      background-image:
+        linear-gradient(to right, rgba(20,30,42,.96) 0%, rgba(20,30,42,.85) 40%, rgba(20,30,42,.48) 100%),
+        url('images/about-hero-tara.png');
+      background-size: cover;
+      background-position: center center;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    /* grain */
+    .about-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .3; pointer-events: none;
+    }
+    /* bottom fade */
+    .about-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 180px;
+      background: linear-gradient(to top, rgba(15,22,32,.5) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1280px; margin: 0 auto;
+      padding: 160px 56px 120px;
+      width: 100%;
+    }
+    .hero-content { max-width: 580px; }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px; display: block;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(40px, 5.5vw, 76px);
+      font-weight: 400; line-height: 1.08;
+      color: var(--white); margin-bottom: 28px;
+    }
+    .hero-body {
+      font-size: 18px; font-weight: 300;
+      color: rgba(255,255,255,.62);
+      line-height: 1.72; margin-bottom: 44px;
+      max-width: 480px;
+    }
+    .btn-primary-gold {
+      display: inline-flex; align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 16px 36px; border-radius: 3px;
+      background: var(--gold); color: var(--navy);
+      transition: all .18s;
+    }
+    .btn-primary-gold:hover { background: #A88A4A; transform: translateY(-1px); }
+    /* image placeholder label */
+    .hero-img-label {
+      position: absolute; right: 56px; bottom: 48px; z-index: 2;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,.2);
+    }
+    @media (max-width: 680px) {
+      .hero-inner { padding: 140px 28px 100px; }
+      .hero-img-label { right: 28px; }
+    }
+
+    /* ── SHARED ── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 56px; }
+    @media (max-width: 680px) { .container { padding: 0 28px; } }
+
+    /* ── SECTION 2: THE BEGINNING ── */
+    .beginning-section {
+      background: var(--white);
+      padding: 140px 0;
+    }
+    .beginning-grid {
+      max-width: 1280px; margin: 0 auto; padding: 0 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px; align-items: stretch;
+    }
+
+    /* Left image stack */
+    .beginning-images {
+      position: relative;
+      display: flex; flex-direction: column;
+      padding-bottom: 48px; /* room for two polaroids */
+    }
+    .main-img-wrap {
+      position: relative;
+      border-radius: 3px; overflow: hidden;
+      flex: 1; min-height: 480px;
+    }
+    /* Main image placeholder */
+    .img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-end;
+      padding: 28px;
+    }
+    .img-placeholder-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; opacity: .35;
+      text-align: center;
+    }
+    .img-ph-childhood {
+      background:
+        radial-gradient(ellipse at 30% 25%, rgba(180,145,80,.1) 0%, transparent 50%),
+        linear-gradient(160deg, #2A3040 0%, #1C2530 60%, #252F3D 100%);
+      color: rgba(255,255,255,.4);
+    }
+    .img-ph-portrait {
+      background:
+        radial-gradient(ellipse at 65% 30%, rgba(200,160,100,.12) 0%, transparent 55%),
+        linear-gradient(150deg, #242E3E 0%, #1A2534 55%, #212D3C 100%);
+      color: rgba(255,255,255,.4);
+    }
+    .img-ph-tiles {
+      background:
+        repeating-linear-gradient(45deg, #E8E2D8 0px, #E8E2D8 1px, transparent 1px, transparent 20px),
+        repeating-linear-gradient(-45deg, #E8E2D8 0px, #E8E2D8 1px, transparent 1px, transparent 20px),
+        #F0EBE0;
+      color: var(--slate-lt);
+      aspect-ratio: 4/3;
+      border-radius: 3px;
+    }
+    .img-ph-ui {
+      /* actual CSS mockup used instead — see below */
+    }
+
+    /* Polaroid overlay */
+    .polaroid {
+      position: absolute;
+      bottom: -32px; left: -24px;
+      width: 44%;
+      background: #fff;
+      padding: 10px 10px 36px;
+      box-shadow: 0 8px 40px rgba(31,42,54,.18), 0 2px 8px rgba(31,42,54,.1);
+      transform: rotate(-2.5deg);
+      z-index: 2;
+    }
+    .polaroid-2 {
+      left: auto; right: -16px;
+      transform: rotate(3.5deg);
+      z-index: 3;
+    }
+    .polaroid-img {
+      width: 100%; aspect-ratio: 1/1;
+      background:
+        radial-gradient(ellipse at 40% 30%, rgba(180,145,80,.12) 0%, transparent 55%),
+        linear-gradient(140deg, #2E3545 0%, #1E2838 100%);
+      display: flex; align-items: center; justify-content: center;
+      filter: saturate(0.85) brightness(0.95);
+    }
+    .polaroid-img span {
+      font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,.25);
+    }
+    .polaroid-caption {
+      position: absolute;
+      bottom: 8px; left: 0; right: 0;
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 12px; font-weight: 400;
+      color: var(--slate);
+      line-height: 1.4;
+      padding: 0 8px;
+    }
+
+    /* Right text column */
+    .beginning-text { padding-top: 8px; }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; display: block;
+    }
+    .section-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 400; line-height: 1.18;
+      color: var(--navy); margin-bottom: 28px;
+    }
+    .section-body {
+      font-size: 16px; font-weight: 300;
+      color: var(--slate); line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .section-body:last-of-type { margin-bottom: 0; }
+
+    @media (max-width: 960px) {
+      .beginning-grid { grid-template-columns: 1fr; gap: 64px; }
+      .polaroid { bottom: -24px; left: -16px; width: 38%; }
+      .polaroid-2 { left: auto; right: -12px; }
+    }
+    @media (max-width: 680px) {
+      .beginning-grid { padding: 0 28px; }
+      .beginning-section { padding: 100px 0 120px; }
+    }
+
+    /* ── SECTION 3: WHY I CREATED IT ── */
+    .why-section {
+      background: #F5F5F4;
+      padding: 160px 0;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    /* subtle watermark */
+    .why-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: url('.claude/icon-512.png') center / contain no-repeat;
+      opacity: 0.025;
+      pointer-events: none;
+    }
+    .why-inner {
+      position: relative; z-index: 1;
+      max-width: 760px; margin: 0 auto; padding: 0 56px;
+    }
+    .why-inner .section-eyebrow { display: block; margin-bottom: 28px; }
+    .why-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 4vw, 54px);
+      font-weight: 400; line-height: 1.12;
+      color: var(--navy); margin-bottom: 48px;
+    }
+    .why-rule {
+      width: 40px; height: 1px;
+      background: var(--gold); opacity: .5;
+      margin: 0 auto 48px;
+    }
+    .why-body {
+      font-size: 17px; font-weight: 300;
+      color: var(--slate); line-height: 1.82;
+      margin-bottom: 20px; text-align: left;
+    }
+    .why-body strong { color: var(--navy); font-weight: 500; }
+    .why-body:last-child { margin-bottom: 0; }
+    @media (max-width: 680px) {
+      .why-inner { padding: 0 28px; }
+      .why-section { padding: 100px 0; }
+    }
+
+    /* ── SECTION 4: THE THINKING BEHIND IT ── */
+    .thinking-section {
+      background: var(--white);
+      padding: 140px 0;
+    }
+    .thinking-grid {
+      max-width: 1280px; margin: 0 auto; padding: 0 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px; align-items: center;
+    }
+    .thinking-text { }
+    .thinking-text .section-body strong {
+      color: var(--navy); font-weight: 500;
+    }
+
+    /* CSS App Mockup */
+    .about-mockup {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 12px 60px rgba(31,42,54,.10), 0 2px 8px rgba(31,42,54,.06);
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    .am-bar {
+      background: var(--navy);
+      padding: 13px 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .am-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: rgba(255,255,255,.14);
+    }
+    .am-bar-logo {
+      margin-left: auto;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .am-bar-logo img { height: 18px; width: auto; opacity: .75; }
+    .am-bar-logo span {
+      font-size: 11px; font-weight: 500;
+      color: rgba(255,255,255,.45); letter-spacing: 0.06em;
+    }
+    .am-bar-count {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,.3); margin-left: 16px;
+    }
+    .am-body { padding: 18px 20px 0; }
+    .am-hand-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--slate-lt);
+      margin-bottom: 10px;
+    }
+    .am-tiles {
+      display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 18px;
+    }
+    .am-tile {
+      width: 28px; height: 34px;
+      background: #FAF8F3;
+      border: 1.5px solid #D8CDB8;
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 600; color: var(--navy);
+      box-shadow: 0 2px 0 #C4B89A;
+    }
+    .am-tile.g  { color: #2E6B3E; }
+    .am-tile.r  { color: #8B2020; }
+    .am-tile.b  { color: #1A4E8A; }
+    .am-tile.sel{ border-color: var(--gold); background: var(--gold-lt); box-shadow: 0 2px 0 var(--gold-dark); }
+    .am-results-hdr {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-top: 1px solid var(--border-lt);
+      margin-bottom: 2px;
+    }
+    .am-results-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--slate-lt);
+    }
+    .am-results-meta { font-size: 10px; color: var(--slate-lt); }
+    .am-result {
+      padding: 12px 0;
+      border-top: 1px solid var(--border-lt);
+    }
+    .am-result-row {
+      display: flex; justify-content: space-between;
+      align-items: baseline; margin-bottom: 4px;
+    }
+    .am-result-left { display: flex; align-items: baseline; gap: 10px; }
+    .am-result-num { font-size: 11px; font-weight: 600; color: var(--slate-lt); }
+    .am-result-name { font-size: 13px; font-weight: 500; color: var(--navy); }
+    .am-result-pct {
+      font-size: 16px; font-weight: 600; color: var(--slate);
+    }
+    .am-result-pct.top { color: var(--navy); }
+    .am-result-sub {
+      font-size: 11px; color: var(--slate-lt); margin-bottom: 6px;
+    }
+    .am-bar-track {
+      height: 2px; background: var(--border-lt); border-radius: 2px;
+    }
+    .am-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; }
+    .am-footer {
+      display: flex; border-top: 1px solid var(--border-lt);
+      margin-top: 4px;
+    }
+    .am-footer-item {
+      flex: 1; text-align: center;
+      padding: 12px 8px;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--slate-lt); text-transform: uppercase;
+      border-right: 1px solid var(--border-lt);
+    }
+    .am-footer-item:last-child { border-right: none; }
+
+    @media (max-width: 960px) {
+      .thinking-grid { grid-template-columns: 1fr; gap: 56px; }
+      .thinking-grid { padding: 0 28px; }
+    }
+    @media (max-width: 680px) {
+      .thinking-section { padding: 100px 0; }
+    }
+
+    /* ── FINAL CTA ── */
+    .about-cta {
+      background: var(--white);
+      padding: 140px 0;
+      border-top: 1px solid var(--border-lt);
+      text-align: center;
+    }
+    .about-cta-inner {
+      max-width: 680px; margin: 0 auto; padding: 0 56px;
+    }
+    .about-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 400; line-height: 1.18;
+      color: var(--navy); margin-bottom: 20px;
+    }
+    .about-cta-body {
+      font-size: 17px; font-weight: 300;
+      color: var(--slate); line-height: 1.75;
+      margin-bottom: 44px;
+    }
+    .cta-btn-group {
+      display: flex; justify-content: center;
+      align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .btn-gold {
+      display: inline-flex; align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 16px 36px; border-radius: 3px;
+      background: var(--gold); color: var(--navy);
+      transition: all .18s;
+    }
+    .btn-gold:hover { background: #A88A4A; transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-flex; align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 15px 32px; border-radius: 3px;
+      background: transparent; color: var(--navy);
+      border: 1px solid var(--border);
+      transition: all .18s;
+    }
+    .btn-outline:hover { border-color: var(--navy); }
+    @media (max-width: 680px) {
+      .about-cta-inner { padding: 0 28px; }
+      .about-cta { padding: 100px 0; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #151E28;
+      padding: 48px 0;
+      border-top: 1px solid rgba(255,255,255,.05);
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .footer-brand img { height: 28px; width: auto; opacity: .7; }
+    .footer-brand span {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px; font-weight: 500;
+      color: rgba(255,255,255,.4);
+    }
+    .footer-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .footer-links a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,.25);
+      text-decoration: none; transition: color .15s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,.5); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.18); }
+    @media (max-width: 680px) {
+      .footer-inner { padding: 0 28px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer-links { flex-wrap: wrap; gap: 20px; }
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+    .reveal-delay-3 { transition-delay: .36s; }
+  </style>
+</head>
+
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src=".claude/mahjong IQ tile front facing.png" alt="Mahjong IQ" class="nav-brand-icon" />
+      <span class="nav-brand-name">Mahjong IQ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="get-started.html" class="nav-btn">Analyze Your Hand</a>
+  </div>
+</nav>
+
+
+<!-- ── HERO ── -->
+<!-- SWAP: Replace the CSS gradient with your portrait image:
+     background-image: linear-gradient(to right, rgba(20,30,42,.92) 0%, rgba(20,30,42,.75) 45%, rgba(20,30,42,.42) 100%), url('images/about-hero-tara.jpg');
+     Then remove the ::after pseudo-element glow. -->
+<section class="about-hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="hero-eyebrow">About the Creator</span>
+      <h1 class="hero-h1">Mahjong has been part of my life for as long as I can remember.</h1>
+      <p class="hero-body">
+        What started as childhood fascination eventually became Mahjong IQ — a strategy tool
+        designed to help players better understand the possibilities hidden in every rack.
+      </p>
+      <a href="get-started.html" class="btn-primary-gold">Try the Hand Analyzer</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 2: THE BEGINNING ── -->
+<section class="beginning-section">
+  <div class="beginning-grid">
+
+    <!-- Left: image stack -->
+    <div class="beginning-images reveal">
+      <!-- Main image -->
+      <div class="main-img-wrap">
+        <img src="images/mahjong-childhood-scene.png" alt="Mahjong game around the table" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;" />
+      </div>
+
+      <!-- Polaroid 1: toddler -->
+      <div class="polaroid">
+        <img src="images/toddler-tara.jpg" alt="Tara as a toddler" style="width:100%;display:block;filter:saturate(0.88) brightness(0.97);" />
+        <span class="polaroid-caption">Me, refusing to go to bed while<br>the mahjong games were still going.</span>
+      </div>
+
+      <!-- Polaroid 2: grandmother's tiles -->
+      <div class="polaroid polaroid-2">
+        <img src="images/vintage-tiles.png" alt="Vintage mahjong tiles" style="width:100%;display:block;filter:saturate(0.82) brightness(0.96);" />
+        <span class="polaroid-caption">Grandma's set.<br>Red nail polish and all.</span>
+      </div>
+    </div>
+
+    <!-- Right: text -->
+    <div class="beginning-text">
+      <span class="section-eyebrow reveal">The Beginning</span>
+      <h2 class="section-h2 reveal reveal-delay-1">I just wanted<br>to be part of it.</h2>
+
+      <p class="section-body reveal reveal-delay-2">
+        When I was growing up, my mother regularly hosted mahjong games with her friends,
+        and I was completely fascinated by it all — the sound of the tiles, the laughter,
+        the energy around the table, and the feeling that something important and exciting
+        was happening.
+      </p>
+      <p class="section-body reveal reveal-delay-2">
+        More than anything, I wanted to be part of it.
+      </p>
+      <p class="section-body reveal reveal-delay-2">
+        The problem was, I became so obsessed with staying up to watch the games that I
+        refused to go to bed. Eventually, my mother had to stop hosting because I simply
+        would not leave the games alone.
+      </p>
+      <p class="section-body reveal reveal-delay-2">
+        Years later, as an adult looking for more meaningful and intimate ways to gather
+        with friends, it became my turn to truly learn the game.
+      </p>
+      <p class="section-body reveal reveal-delay-2">
+        I still play with my grandmother's vintage mahjong set, which was passed down to
+        my mother and eventually to me. One day, I hope to pass it down to my daughter.
+      </p>
+      <p class="section-body reveal reveal-delay-2">
+        Over the years, these tiles have been part of countless games, endless laughter,
+        spirited competition, and long nights around the table.
+      </p>
+      <p class="section-body reveal reveal-delay-2">
+        They've also been used to test nearly every iteration of Mahjong IQ along the way,
+        helping me make sure the strategy and logic behind the app truly reflected the way
+        real games unfold.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── SECTION 3: WHY I CREATED MAHJONG IQ ── -->
+<section class="why-section">
+  <div class="why-inner">
+    <span class="section-eyebrow reveal">Why I Created Mahjong IQ</span>
+    <h2 class="why-h2 reveal reveal-delay-1">
+      The hardest part of mahjong isn't learning the rules.<br>
+      It's knowing where to go.
+    </h2>
+    <div class="why-rule reveal reveal-delay-2"></div>
+    <p class="why-body reveal reveal-delay-2">
+      At the start of every game, there are dozens of possible hands and countless ways
+      to <strong>interpret your tiles</strong>.
+    </p>
+    <p class="why-body reveal reveal-delay-2">
+      Some players instinctively recognize direction quickly. Others feel overwhelmed by
+      the possibilities or commit too early to a hand that limits their chances later.
+    </p>
+    <p class="why-body reveal reveal-delay-2">
+      The Hand Analyzer was created to help players slow that moment down — to see stronger
+      possibilities, recognize smarter paths, and <strong>build confidence before the
+      first discard</strong>.
+    </p>
+  </div>
+</section>
+
+
+<!-- ── SECTION 4: THE THINKING BEHIND IT ── -->
+<section class="thinking-section">
+  <div class="thinking-grid">
+
+    <!-- Left: text -->
+    <div class="thinking-text">
+      <span class="section-eyebrow reveal">The Thinking Behind It</span>
+      <h2 class="section-h2 reveal reveal-delay-1">Strategy begins with seeing patterns clearly.</h2>
+      <p class="section-body reveal reveal-delay-2">
+        Over time, my fascination with the game evolved into a fascination with
+        decision-making itself — how experienced players quickly recognize opportunities,
+        pivot when needed, and instinctively understand probability and flow.
+      </p>
+      <p class="section-body reveal reveal-delay-2">
+        The Hand Analyzer was designed around that same idea: helping players better recognize
+        what their tiles are <strong>actually telling them</strong>.
+      </p>
+    </div>
+
+    <!-- Right: CSS App Mockup -->
+    <div class="about-mockup reveal reveal-delay-2">
+      <div class="am-bar">
+        <div class="am-dot"></div>
+        <div class="am-dot"></div>
+        <div class="am-dot"></div>
+        <div class="am-bar-logo">
+          <img src=".claude/mahjong IQ tile front facing.png" alt="Mahjong IQ" />
+          <span>Hand Analyzer</span>
+        </div>
+        <span class="am-bar-count">72 Hands Scored</span>
+      </div>
+      <div class="am-body">
+        <div class="am-hand-label">Your Hand</div>
+        <div class="am-tiles">
+          <div class="am-tile g sel">1B</div>
+          <div class="am-tile g sel">2B</div>
+          <div class="am-tile g sel">3B</div>
+          <div class="am-tile r">1C</div>
+          <div class="am-tile r sel">3C</div>
+          <div class="am-tile r sel">3C</div>
+          <div class="am-tile b">5D</div>
+          <div class="am-tile b sel">5D</div>
+          <div class="am-tile" style="font-size:8px;color:var(--slate-lt);">N</div>
+          <div class="am-tile sel" style="font-size:8px;color:var(--gold-dark);">白</div>
+          <div class="am-tile" style="font-size:8px;color:var(--slate-lt);">🌸</div>
+          <div class="am-tile sel" style="font-size:8px;color:var(--gold-dark);">JKR</div>
+        </div>
+        <div class="am-results-hdr">
+          <span class="am-results-label">Best Options</span>
+          <span class="am-results-meta">Win Probability</span>
+        </div>
+        <div class="am-result">
+          <div class="am-result-row">
+            <div class="am-result-left">
+              <span class="am-result-num">01</span>
+              <span class="am-result-name">Consecutive Run — Bam</span>
+            </div>
+            <span class="am-result-pct top">92%</span>
+          </div>
+          <div class="am-result-sub">6 tiles away · 3 callable · Joker compatible</div>
+          <div class="am-bar-track"><div class="am-bar-fill" style="width:92%"></div></div>
+        </div>
+        <div class="am-result">
+          <div class="am-result-row">
+            <div class="am-result-left">
+              <span class="am-result-num">02</span>
+              <span class="am-result-name">Quints — Craks 3</span>
+            </div>
+            <span class="am-result-pct">78%</span>
+          </div>
+          <div class="am-result-sub">7 tiles away · 2 callable</div>
+          <div class="am-bar-track"><div class="am-bar-fill" style="width:78%"></div></div>
+        </div>
+        <div class="am-result">
+          <div class="am-result-row">
+            <div class="am-result-left">
+              <span class="am-result-num">03</span>
+              <span class="am-result-name">All Simples</span>
+            </div>
+            <span class="am-result-pct">63%</span>
+          </div>
+          <div class="am-result-sub">8 tiles away · 0 callable</div>
+          <div class="am-bar-track"><div class="am-bar-fill" style="width:63%"></div></div>
+        </div>
+      </div>
+      <div class="am-footer">
+        <div class="am-footer-item">Next Options</div>
+        <div class="am-footer-item">Pivot Hands</div>
+        <div class="am-footer-item">Discards</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── FINAL CTA ── -->
+<section class="about-cta">
+  <div class="about-cta-inner">
+    <h2 class="reveal">The more you understand the game,<br>the more fun it becomes.</h2>
+    <p class="about-cta-body reveal reveal-delay-1">
+      The Hand Analyzer was created to help players build confidence, sharpen instincts, and
+      enjoy the strategy behind the game on a deeper level.
+    </p>
+    <div class="cta-btn-group reveal reveal-delay-2">
+      <a href="get-started.html" class="btn-gold">Try the Hand Analyzer</a>
+      <a href="how-it-works.html" class="btn-outline">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-brand">
+      <img src=".claude/mahjong IQ tile front facing.png" alt="Mahjong IQ" />
+      <span>Mahjong IQ</span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="get-started.html">Get Started</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Mahjong IQ</span>
+  </div>
+</footer>
+
+
+<script>
+  /* Nav scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* Scroll reveal */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
