@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Mahjong IQ</title>
+  <meta name="description" content="How Mahjong IQ collects, uses, discloses, and protects information when you visit getmahjongiq.com or use the Hand Analyzer." />
+  <link rel="canonical" href="https://getmahjongiq.com/privacy" />
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://getmahjongiq.com/privacy" />
+  <meta property="og:title" content="Privacy Policy — Mahjong IQ" />
+  <meta property="og:description" content="How Mahjong IQ collects, uses, discloses, and protects information when you visit getmahjongiq.com or use the Hand Analyzer." />
+  <meta property="og:image" content="https://getmahjongiq.com/OG Image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Mahjong IQ" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Privacy Policy — Mahjong IQ" />
+  <meta name="twitter:description" content="How Mahjong IQ collects, uses, discloses, and protects information when you visit getmahjongiq.com or use the Hand Analyzer." />
+  <meta name="twitter:image" content="https://getmahjongiq.com/OG Image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/tile icon.png" />
+  <link rel="apple-touch-icon" href="/tile icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F4F5F7;
+      --white:     #FFFFFF;
+      --navy:      #1F2A36;
+      --navy-lt:   #2D3F52;
+      --slate:     #5E6A78;
+      --slate-lt:  #9BA4AF;
+      --gold:      #B89A5B;
+      --gold-lt:   #EDE5CA;
+      --gold-dark: #8B7235;
+      --border:    #DDE0E5;
+      --border-lt: #ECEEF1;
+    }
+
+    html { scroll-behavior: smooth; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--navy);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    }
+    nav.scrolled {
+      background: rgba(244,245,247,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-lt);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 56px; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px;
+    }
+    .nav-brand {
+      display: flex; align-items: center;
+      text-decoration: none; flex-shrink: 0;
+    }
+    nav.scrolled .nav-brand { color: var(--navy); }
+    .nav-brand-name {
+      display: block;
+      font-family: 'Cormorant SC', serif;
+      font-size: 24px; font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--white);
+    }
+    nav.scrolled .nav-brand-name { color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 16px; list-style: none; }
+    .nav-links a {
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 10px 24px; border-radius: 3px;
+      border: 1px solid rgba(255,255,255,.4); color: rgba(255,255,255,.85);
+      transition: all .18s; white-space: nowrap;
+    }
+    nav.scrolled .nav-links a { border-color: var(--border); color: var(--slate); }
+    .nav-links a:hover { border-color: white; color: white; }
+    nav.scrolled .nav-links a:hover { border-color: var(--navy); color: var(--navy); }
+    .nav-btn {
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 10px 24px; border-radius: 3px;
+      background: var(--gold); color: var(--navy);
+      border: 1px solid var(--gold);
+      transition: all .18s; white-space: nowrap;
+    }
+    .nav-btn:hover { background: #A88A4A; border-color: #A88A4A; }
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; background: none; border: none; cursor: pointer;
+      padding: 8px; margin-left: auto;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: all .2s;
+    }
+    nav.scrolled .hamburger span { background: var(--navy); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; flex-direction: column;
+      background: rgba(244,245,247,0.98); backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-lt);
+      padding: 16px 28px 24px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      background: var(--gold); color: var(--navy);
+      padding: 14px 24px; border-radius: 3px;
+      text-align: center; margin-bottom: 10px;
+    }
+    .mobile-menu a:last-child { margin-bottom: 0; }
+    .mobile-menu .nav-btn {
+      background: var(--gold); color: var(--navy);
+      border: none;
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-inner { padding: 0 28px; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── PAGE HERO (no image — gradient only) ── */
+    .page-hero {
+      background-image: linear-gradient(135deg, #232F3D 0%, #151E28 100%);
+      padding: 200px 0 100px;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .3; pointer-events: none;
+    }
+    .page-hero-inner {
+      position: relative; z-index: 1;
+      max-width: 820px; margin: 0 auto; padding: 0 56px;
+      text-align: center;
+    }
+    .page-hero-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px; display: block;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: clamp(38px, 5vw, 60px);
+      font-weight: 400; line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .page-hero-subhead {
+      font-size: 14px; font-weight: 400;
+      color: rgba(255,255,255,.55);
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 680px) {
+      .page-hero-inner { padding: 0 28px; }
+      .page-hero { padding: 140px 0 80px; }
+    }
+
+    /* ── SHARED LAYOUT ── */
+    .container-narrow { max-width: 800px; margin: 0 auto; padding: 0 56px; }
+    section { padding: 120px 0; }
+    @media (max-width: 680px) {
+      .container-narrow { padding: 0 20px; }
+      section { padding: 64px 0; }
+    }
+
+    /* ── LEGAL DOCUMENT ── */
+    .legal-section { background: var(--bg); padding: 80px 0 120px; }
+    .legal-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 12px 60px rgba(31,42,54,.10), 0 2px 8px rgba(31,42,54,.06);
+      padding: 64px 64px 72px;
+    }
+    .legal-p {
+      font-size: 15.5px; font-weight: 300;
+      color: var(--slate); line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .legal-p:last-child { margin-bottom: 0; }
+    .legal-p strong { color: var(--navy); font-weight: 500; }
+    .legal-lead { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border-lt); }
+    .legal-h2 {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(21px, 2.4vw, 25px);
+      font-weight: 600; letter-spacing: 0.01em;
+      color: var(--navy);
+      margin: 0 0 16px;
+    }
+    .legal-h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--gold-dark);
+      margin: 28px 0 12px;
+    }
+    .legal-h3:first-of-type { margin-top: 8px; }
+    .legal-section-block { margin-bottom: 44px; }
+    .legal-section-block:last-child { margin-bottom: 0; }
+    .legal-list {
+      list-style: none;
+      margin: 0 0 18px;
+    }
+    .legal-list li {
+      font-size: 15.5px; font-weight: 300;
+      color: var(--slate); line-height: 1.75;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .legal-list li:last-child { margin-bottom: 0; }
+    .legal-list li::before {
+      content: '';
+      position: absolute; left: 0; top: 9px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold);
+    }
+    .legal-address {
+      font-size: 15.5px; font-weight: 400;
+      color: var(--navy); line-height: 1.9;
+      margin-top: 8px;
+    }
+    .legal-address a { color: var(--navy); }
+    @media (max-width: 680px) {
+      .legal-card { padding: 40px 24px 48px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #151E28;
+      padding: 48px 0;
+      border-top: 1px solid rgba(255,255,255,.05);
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .footer-brand span {
+      font-family: 'Cormorant SC', serif;
+      font-size: 15px; font-weight: 500;
+      color: rgba(255,255,255,.4);
+    }
+    .footer-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .footer-links a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,.55);
+      text-decoration: none; transition: color .15s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,.85); }
+    .footer-copy {
+      font-size: 12px; color: rgba(255,255,255,.55);
+    }
+    .footer-credit { font-size: 11px; color: rgba(255,255,255,.55); }
+    .footer-credit a { color: rgba(255,255,255,.55); text-decoration: underline; transition: color .15s; }
+    .footer-credit a:hover { color: rgba(255,255,255,.85); }
+    @media (max-width: 680px) {
+      .footer-inner { padding: 0 28px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer-links { flex-wrap: wrap; gap: 20px; }
+    }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+  </style>
+</head>
+
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-name">Mahjong IQ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="get-started.html" class="nav-btn">Analyze Your Hand</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="how-it-works.html">How It Works</a>
+    <a href="contact.html">Contact</a>
+    <a href="get-started.html" class="nav-btn">Analyze Your Hand</a>
+  </div>
+</nav>
+
+
+<!-- ── PAGE HERO ── -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-eyebrow reveal">Legal</span>
+    <h1 class="reveal reveal-delay-1">Privacy Policy</h1>
+    <p class="page-hero-subhead reveal reveal-delay-2">Effective Date: July 22, 2026 &nbsp;|&nbsp; Last Updated: July 22, 2026</p>
+  </div>
+</section>
+
+
+<!-- ── LEGAL DOCUMENT ── -->
+<section class="legal-section">
+  <div class="container-narrow">
+    <div class="legal-card reveal">
+
+      <div class="legal-lead">
+        <p class="legal-p">Mahjong IQ is operated by Intuitive Advantage Group LLC, doing business as Mahjong IQ.</p>
+        <p class="legal-p">This Privacy Policy explains how we collect, use, disclose, and protect information when you visit getmahjongiq.com, purchase or use the Mahjong IQ Hand Analyzer, contact us, or otherwise interact with our services.</p>
+        <p class="legal-p">In this Privacy Policy, &ldquo;Mahjong IQ,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; and &ldquo;our&rdquo; refer to Intuitive Advantage Group LLC. &ldquo;You&rdquo; and &ldquo;your&rdquo; refer to a website visitor, purchaser, or user of the Service.</p>
+        <p class="legal-p">By using Mahjong IQ, you acknowledge the practices described in this Privacy Policy.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">1. Information We Collect</h2>
+        <p class="legal-p">The information we collect depends on how you interact with Mahjong IQ.</p>
+
+        <h3 class="legal-h3">Information You Provide</h3>
+        <p class="legal-p">We may collect information you provide when you:</p>
+        <ul class="legal-list">
+          <li>Purchase the Hand Analyzer</li>
+          <li>Enter your email address during checkout</li>
+          <li>Contact us for support</li>
+          <li>Submit a question, comment, or feedback</li>
+          <li>Join an email list</li>
+          <li>Request information about future products</li>
+          <li>Exercise a privacy-related right</li>
+        </ul>
+        <p class="legal-p">This information may include:</p>
+        <ul class="legal-list">
+          <li>Name</li>
+          <li>Email address</li>
+          <li>Billing address</li>
+          <li>Purchase date</li>
+          <li>Product purchased</li>
+          <li>Payment status</li>
+          <li>Access-code status</li>
+          <li>Communications you send to us</li>
+          <li>Other information you voluntarily provide</li>
+        </ul>
+
+        <h3 class="legal-h3">Payment Information</h3>
+        <p class="legal-p">Payments are processed by Stripe or another authorized payment processor.</p>
+        <p class="legal-p">Stripe may collect information such as:</p>
+        <ul class="legal-list">
+          <li>Name</li>
+          <li>Email address</li>
+          <li>Billing address</li>
+          <li>Payment-card details</li>
+          <li>Transaction information</li>
+          <li>Device and fraud-prevention information</li>
+        </ul>
+        <p class="legal-p">We do not directly receive or store your complete payment-card number, expiration date, or card security code.</p>
+        <p class="legal-p">When you provide information through Stripe Checkout, Stripe processes that information according to its own privacy practices.</p>
+
+        <h3 class="legal-h3">Hand Analyzer Inputs</h3>
+        <p class="legal-p">You may enter tile information or other gameplay information into the Mahjong IQ Hand Analyzer.</p>
+        <p class="legal-p">We do not intentionally create or maintain a user profile containing:</p>
+        <ul class="legal-list">
+          <li>The tiles you enter</li>
+          <li>Your hand-analysis results</li>
+          <li>Your discard decisions</li>
+          <li>Your gameplay history</li>
+          <li>A history of the hands you analyze</li>
+        </ul>
+        <p class="legal-p">Tile inputs and analysis requests may be processed temporarily as necessary to generate results and operate the Service.</p>
+        <p class="legal-p">Technical service providers may also process temporary request data, diagnostic information, or server logs as part of providing hosting, security, and troubleshooting services.</p>
+
+        <h3 class="legal-h3">Information Collected Automatically</h3>
+        <p class="legal-p">When you visit the website or use the Hand Analyzer, we and our service providers may automatically receive technical information such as:</p>
+        <ul class="legal-list">
+          <li>Internet Protocol address</li>
+          <li>Browser type</li>
+          <li>Device type</li>
+          <li>Operating system</li>
+          <li>Approximate geographic area</li>
+          <li>Pages viewed</li>
+          <li>Referring website</li>
+          <li>Date and time of access</li>
+          <li>Links or buttons selected</li>
+          <li>Error and diagnostic information</li>
+          <li>General interaction and usage information</li>
+        </ul>
+        <p class="legal-p">This information may be collected through server logs, cookies, pixels, browser storage, or similar technologies.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">2. Cookies and Similar Technologies</h2>
+        <p class="legal-p">Mahjong IQ and its service providers may use cookies, local storage, and similar technologies to:</p>
+        <ul class="legal-list">
+          <li>Operate the website and Hand Analyzer</li>
+          <li>Preserve access or browser preferences</li>
+          <li>Maintain security</li>
+          <li>Prevent fraud or abuse</li>
+          <li>Understand website traffic</li>
+          <li>Diagnose technical problems</li>
+          <li>Measure how visitors use the website</li>
+          <li>Improve the Service</li>
+        </ul>
+        <p class="legal-p">Some technologies are necessary for the website or purchase process to function properly.</p>
+        <p class="legal-p">We may also use analytics services, such as Google Analytics or similar tools, to understand general website usage. These services may collect information such as session activity, approximate location, browser type, and device information. Google states that its default Analytics implementation can collect session statistics, approximate geolocation, and browser and device information.</p>
+        <p class="legal-p">You can control or delete cookies through your browser settings. Disabling certain technologies may affect the operation of the website or Hand Analyzer.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">3. How We Use Information</h2>
+        <p class="legal-p">We may use information to:</p>
+        <ul class="legal-list">
+          <li>Process and confirm purchases</li>
+          <li>Calculate and collect applicable sales tax</li>
+          <li>Deliver access codes and purchase links</li>
+          <li>Provide and restore access to the Hand Analyzer</li>
+          <li>Respond to questions and support requests</li>
+          <li>Verify transactions</li>
+          <li>Prevent fraud, misuse, or unauthorized access</li>
+          <li>Operate, maintain, secure, and troubleshoot the Service</li>
+          <li>Understand general website and product usage</li>
+          <li>Improve our products, website, and customer experience</li>
+          <li>Maintain business, accounting, and tax records</li>
+          <li>Enforce our Terms and Conditions</li>
+          <li>Comply with legal obligations</li>
+          <li>Protect our rights, users, and Service</li>
+          <li>Send product updates or announcements where permitted</li>
+        </ul>
+        <p class="legal-p">We may use your email address for both transactional and optional communications.</p>
+        <p class="legal-p">Transactional emails may include:</p>
+        <ul class="legal-list">
+          <li>Purchase confirmations</li>
+          <li>Access information</li>
+          <li>Technical notices</li>
+          <li>Security messages</li>
+          <li>Support responses</li>
+          <li>Material service updates</li>
+        </ul>
+        <p class="legal-p">Where permitted, we may also send information about:</p>
+        <ul class="legal-list">
+          <li>Mahjong IQ updates</li>
+          <li>Future annual Hand Analyzers</li>
+          <li>New features</li>
+          <li>Related products or launches</li>
+        </ul>
+        <p class="legal-p">You may unsubscribe from optional marketing emails at any time. Unsubscribing from marketing messages will not prevent necessary purchase, access, security, or support communications. Stripe notes that promotional email practices should include appropriate notice or consent and prompt handling of unsubscribe requests.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">4. How We Disclose Information</h2>
+        <p class="legal-p">We may disclose information to service providers that help us operate Mahjong IQ.</p>
+        <p class="legal-p">These providers may include companies that provide:</p>
+        <ul class="legal-list">
+          <li>Payment processing</li>
+          <li>Tax calculation</li>
+          <li>Website hosting</li>
+          <li>Application hosting</li>
+          <li>Domain services</li>
+          <li>Email delivery</li>
+          <li>Workflow automation</li>
+          <li>Analytics</li>
+          <li>Fraud prevention</li>
+          <li>Security</li>
+          <li>Technical support</li>
+          <li>Accounting or professional services</li>
+        </ul>
+        <p class="legal-p">Our current or anticipated service providers may include:</p>
+        <ul class="legal-list">
+          <li>Stripe, for checkout, payments, billing information, tax calculation, and fraud prevention</li>
+          <li>Microsoft, for business email and purchase-email delivery</li>
+          <li>Make, for workflow automation</li>
+          <li>Netlify, for website hosting and deployment</li>
+          <li>Vercel, for application hosting</li>
+          <li>Google, for search, website measurement, or analytics services when enabled</li>
+          <li>Other vendors reasonably necessary to operate and support the Service</li>
+        </ul>
+        <p class="legal-p">These providers may process information only as permitted by their agreements, their own privacy practices, and applicable law.</p>
+        <p class="legal-p">Stripe Checkout can display a merchant's privacy-policy link, and Stripe provides tools that businesses can use when handling eligible data-access or deletion requests.</p>
+        <p class="legal-p">We may also disclose information:</p>
+        <ul class="legal-list">
+          <li>To comply with a law, regulation, subpoena, court order, or lawful government request</li>
+          <li>To investigate fraud, security incidents, or Terms violations</li>
+          <li>To protect our rights, property, safety, users, or the public</li>
+          <li>To professional advisers such as attorneys, accountants, or insurers</li>
+          <li>In connection with a merger, financing, acquisition, sale, restructuring, or transfer of all or part of the business</li>
+          <li>With your direction or consent</li>
+        </ul>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">5. Sale of Personal Information and Targeted Advertising</h2>
+        <p class="legal-p">We do not currently sell personal information for money.</p>
+        <p class="legal-p">We do not currently use personal information for cross-context behavioral or targeted advertising.</p>
+        <p class="legal-p">If our practices materially change, we will update this Privacy Policy and provide any notices or choices required by applicable law.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">6. Data Retention</h2>
+        <p class="legal-p">We retain information for as long as reasonably necessary to:</p>
+        <ul class="legal-list">
+          <li>Provide purchased access</li>
+          <li>Maintain transaction and access records</li>
+          <li>Respond to support requests</li>
+          <li>Meet tax, accounting, and legal requirements</li>
+          <li>Resolve disputes</li>
+          <li>Prevent fraud or misuse</li>
+          <li>Enforce agreements</li>
+          <li>Maintain the security and integrity of the Service</li>
+        </ul>
+        <p class="legal-p">Because customers may need to restore access after changing devices or clearing browser data, we may retain the purchaser's email address, purchase information, and access-code status while the purchased annual version remains supported and for a reasonable period afterward.</p>
+        <p class="legal-p">Payment and transaction records may be retained by Stripe under Stripe's own policies and legal obligations.</p>
+        <p class="legal-p">Support communications may be retained for a reasonable period after the request is resolved.</p>
+        <p class="legal-p">We do not intentionally retain a continuing history of tile inputs or analysis results.</p>
+        <p class="legal-p">When information is no longer reasonably needed, we may delete, anonymize, or aggregate it, subject to legal, security, backup, and technical limitations.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">7. Data Security</h2>
+        <p class="legal-p">We use reasonable administrative, technical, and organizational measures intended to protect information against:</p>
+        <ul class="legal-list">
+          <li>Unauthorized access</li>
+          <li>Loss</li>
+          <li>Misuse</li>
+          <li>Alteration</li>
+          <li>Disclosure</li>
+          <li>Destruction</li>
+        </ul>
+        <p class="legal-p">These measures may include access controls, secure third-party payment processing, encrypted connections, limited data collection, and reputable hosting and service providers.</p>
+        <p class="legal-p">However, no website, online service, transmission method, or storage system is completely secure. We cannot guarantee absolute security.</p>
+        <p class="legal-p">You are responsible for keeping your access email and account information secure and for notifying us if you believe access has been compromised.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">8. Your Privacy Choices and Rights</h2>
+        <p class="legal-p">You may contact us to:</p>
+        <ul class="legal-list">
+          <li>Ask what personal information we maintain about you</li>
+          <li>Request correction of inaccurate information</li>
+          <li>Request deletion of eligible information</li>
+          <li>Request a copy of eligible information</li>
+          <li>Withdraw from optional marketing communications</li>
+          <li>Ask a question about our privacy practices</li>
+        </ul>
+        <p class="legal-p">Certain requests may be limited where retaining information is reasonably necessary to:</p>
+        <ul class="legal-list">
+          <li>Complete a transaction</li>
+          <li>Maintain purchased access</li>
+          <li>Comply with tax, accounting, or legal requirements</li>
+          <li>Protect against fraud</li>
+          <li>Exercise or defend legal claims</li>
+          <li>Maintain security</li>
+          <li>Honor another person's rights</li>
+        </ul>
+        <p class="legal-p">We may need to verify your identity before completing a request.</p>
+        <p class="legal-p">Depending on where you live and whether a particular privacy law applies to our business, you may also have rights to:</p>
+        <ul class="legal-list">
+          <li>Confirm whether your personal data is being processed</li>
+          <li>Access personal data</li>
+          <li>Correct inaccuracies</li>
+          <li>Delete certain personal data</li>
+          <li>Obtain a portable copy of certain personal data</li>
+          <li>Opt out of the sale of personal data</li>
+          <li>Opt out of targeted advertising</li>
+          <li>Opt out of certain automated profiling</li>
+          <li>Appeal a denied privacy request</li>
+        </ul>
+        <p class="legal-p">The Connecticut Data Privacy Act provides these types of rights to Connecticut residents when the law applies to the business and processing involved.</p>
+        <p class="legal-p">To submit a privacy request, email:<br>
+        <a href="mailto:tara@getmahjongiq.com">tara@getmahjongiq.com</a></p>
+        <p class="legal-p">Use the subject line:<br>
+        <strong>Privacy Request</strong></p>
+        <p class="legal-p">Include enough information for us to identify the purchase or information involved. Do not send payment-card numbers or other unnecessary sensitive information by email.</p>
+        <p class="legal-p">If we deny an eligible request, you may reply and ask us to reconsider the decision.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">9. Marketing Communications</h2>
+        <p class="legal-p">You may opt out of optional marketing emails by:</p>
+        <ul class="legal-list">
+          <li>Clicking the unsubscribe link in the email</li>
+          <li>Emailing tara@getmahjongiq.com</li>
+          <li>Following any other opt-out method provided in the message</li>
+        </ul>
+        <p class="legal-p">We may still send non-promotional messages necessary to:</p>
+        <ul class="legal-list">
+          <li>Deliver your purchase</li>
+          <li>Provide access</li>
+          <li>Respond to support requests</li>
+          <li>Communicate security or legal matters</li>
+          <li>Notify you of material changes affecting the Service</li>
+        </ul>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">10. Children's Privacy</h2>
+        <p class="legal-p">Mahjong IQ is a general-audience strategy product and is not directed to children under 13.</p>
+        <p class="legal-p">A parent or legal guardian should make the purchase for anyone under 18.</p>
+        <p class="legal-p">We do not knowingly collect personal information directly from a child under 13 without legally required parental involvement or consent.</p>
+        <p class="legal-p">If you are under 13, do not independently submit your name, email address, support request, or other personal information through Mahjong IQ.</p>
+        <p class="legal-p">If we learn that we collected personal information directly from a child under 13 in a manner not permitted by law, we will take reasonable steps to delete it.</p>
+        <p class="legal-p">The federal Children's Online Privacy Protection Rule applies to websites or online services directed to children under 13 and to services that have actual knowledge they are collecting personal information from a child under 13.</p>
+        <p class="legal-p">A parent or guardian who believes a child submitted information may contact:<br>
+        <a href="mailto:tara@getmahjongiq.com">tara@getmahjongiq.com</a></p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">11. Third-Party Websites and Services</h2>
+        <p class="legal-p">The website may contain links to services that we do not control, including Stripe Checkout or other third-party websites.</p>
+        <p class="legal-p">A third party's collection and use of information are governed by that party's own terms and privacy policy.</p>
+        <p class="legal-p">We are not responsible for the privacy, security, content, or practices of independent third parties.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">12. International Users</h2>
+        <p class="legal-p">Mahjong IQ is operated from the United States.</p>
+        <p class="legal-p">If you access the Service from outside the United States, your information may be transferred to, stored in, or processed in the United States or other countries where our service providers operate.</p>
+        <p class="legal-p">Those countries may have privacy laws different from those in your place of residence.</p>
+        <p class="legal-p">By using the Service, you acknowledge that such processing may occur, subject to any rights and safeguards required by applicable law.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">13. Changes to This Privacy Policy</h2>
+        <p class="legal-p">We may update this Privacy Policy to reflect changes in:</p>
+        <ul class="legal-list">
+          <li>Our products or services</li>
+          <li>Technology</li>
+          <li>Service providers</li>
+          <li>Data practices</li>
+          <li>Legal or regulatory requirements</li>
+          <li>Security needs</li>
+        </ul>
+        <p class="legal-p">The updated version will be posted with a revised &ldquo;Last Updated&rdquo; date.</p>
+        <p class="legal-p">If a change materially affects how we use personal information already collected, we will provide additional notice where reasonably appropriate or legally required.</p>
+      </div>
+
+      <div class="legal-section-block">
+        <h2 class="legal-h2">14. Contact Us</h2>
+        <p class="legal-p">Questions, concerns, or requests regarding this Privacy Policy may be sent to:</p>
+        <p class="legal-address">
+          Mahjong IQ<br>
+          Intuitive Advantage Group LLC<br>
+          Email: <a href="mailto:tara@getmahjongiq.com">tara@getmahjongiq.com</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-brand">
+      <span>Mahjong IQ</span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="get-started.html">Get Started</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Mahjong IQ &nbsp;|&nbsp; <span class="footer-credit">Site by <a href="https://www.intuitiveadvantagemarketing.com" target="_blank" rel="noopener">Intuitive Advantage Marketing</a></span></span>
+  </div>
+</footer>
+
+
+<script>
+  /* Nav scroll behaviour */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* Hamburger menu */
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobileMenu').classList.toggle('open');
+    nav.classList.add('scrolled');
+  }
+
+  /* Scroll reveal */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
