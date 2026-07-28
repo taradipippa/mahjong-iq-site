@@ -453,6 +453,69 @@
     }
 
 
+    /* ── SECTION 3B: TAKE IT WHEREVER YOU PLAY ── */
+    .app-anywhere-section { background: var(--white); }
+    .app-anywhere-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    @media (max-width: 760px) { .app-anywhere-grid { grid-template-columns: 1fr; gap: 48px; } }
+    .app-anywhere-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; display: block;
+    }
+    .app-anywhere-heading {
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 400; line-height: 1.2;
+      color: var(--navy); margin-bottom: 20px;
+    }
+    .app-anywhere-body {
+      font-size: 17px; font-weight: 400;
+      color: var(--slate); line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .app-anywhere-kicker {
+      font-size: 15px; font-weight: 600;
+      color: var(--gold-dark); letter-spacing: .01em;
+      margin-bottom: 32px;
+    }
+    .app-anywhere-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .app-anywhere-link {
+      font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+      color: var(--slate); text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px; transition: color .15s, border-color .15s;
+    }
+    .app-anywhere-link:hover { color: var(--gold-dark); border-color: var(--gold-dark); }
+    .app-anywhere-shot {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .app-anywhere-shot .phone-frame {
+      background: var(--white);
+      padding: 14px;
+      border-radius: 28px;
+      box-shadow:
+        0 12px 40px rgba(31,42,54,.14),
+        0 2px 10px rgba(31,42,54,.08);
+    }
+    .app-anywhere-shot .phone-frame img {
+      width: 280px;
+      max-width: 100%;
+      border-radius: 18px;
+    }
+    .app-anywhere-caption {
+      text-align: center; margin-top: 24px;
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: 16px; font-weight: 400; font-style: italic;
+      color: var(--slate); max-width: 320px;
+    }
+    @media (max-width: 680px) {
+      .app-anywhere-actions { flex-direction: column; align-items: flex-start; gap: 18px; }
+    }
+
+
     /* ── SECTION 4: WHY THIS MATTERS ── */
     .why-section { background: var(--navy); }
     .why-center { text-align: center; margin-bottom: 80px; }
@@ -667,12 +730,12 @@
         Now <span class="gold">play to win.</span>
       </h1>
       <p class="hero-subhead">Start with a strategy before the first tile is thrown.</p>
-      <p class="hero-support">See your best hand options based on your tiles—instantly.</p>
+      <p class="hero-support">Compare your strongest hand options, alternate paths, and strategic next moves—instantly.</p>
       <div class="hero-actions">
         <a href="get-started.html" class="btn-primary gold">Analyze Your Hand</a>
         <a href="#product" class="btn-ghost">See How It Works</a>
       </div>
-      <p class="hero-fine">No account needed. Works on mobile.</p>
+      <p class="hero-fine">No account needed. Works on phone, tablet, or computer—and can be added to your Home Screen like an app.</p>
     </div>
   </div>
   <div class="hero-scroll">
@@ -730,7 +793,7 @@
         <p class="product-body" style="margin-top:24px;">The analyzer also gives you:</p>
         <ul style="margin-top:12px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px;">
           <li style="font-size:15px;font-weight:300;color:var(--slate);line-height:1.6;padding-left:16px;border-left:2px solid var(--border);"><strong style="color:var(--navy);font-weight:600;">Next 3 best hands</strong> — your next strongest options if your top picks don't develop</li>
-          <li style="font-size:15px;font-weight:300;color:var(--slate);line-height:1.6;padding-left:16px;border-left:2px solid var(--border);"><strong style="color:var(--navy);font-weight:600;">Best discard</strong> — the tile most likely to slow you down</li>
+          <li style="font-size:15px;font-weight:300;color:var(--slate);line-height:1.6;padding-left:16px;border-left:2px solid var(--border);"><strong style="color:var(--navy);font-weight:600;">Discard guidance</strong> — identify the tile(s) contributing least to your strongest hand paths</li>
           <li style="font-size:15px;font-weight:300;color:var(--slate);line-height:1.6;padding-left:16px;border-left:2px solid var(--border);"><strong style="color:var(--navy);font-weight:600;">Pivot hands</strong> — if you start pulling certain tiles as the game unfolds, these hands come into play</li>
         </ul>
       </div>
@@ -767,6 +830,37 @@
 
     </div>
 
+  </div>
+</section>
+
+
+<!-- ── SECTION 3B: TAKE IT WHEREVER YOU PLAY ── -->
+<section class="app-anywhere-section">
+  <div class="container-mid">
+    <div class="app-anywhere-grid">
+
+      <!-- Text side -->
+      <div class="reveal">
+        <span class="app-anywhere-label">Use it anywhere</span>
+        <h2 class="app-anywhere-heading">Take Mahjong IQ wherever you play.</h2>
+        <p class="app-anywhere-body">Mahjong IQ is a browser-based app you can use on your phone, tablet, or computer—without downloading anything from the App Store or Google Play.</p>
+        <p class="app-anywhere-body">Add it to your phone or tablet's Home Screen and it will appear as its own Mahjong IQ app icon alongside your other apps. Then simply tap the icon whenever you're ready to analyze a hand.</p>
+        <p class="app-anywhere-kicker">One-time setup. One-tap access whenever you play.</p>
+        <div class="app-anywhere-actions">
+          <a href="get-started.html" class="btn-primary gold">Try It Free</a>
+          <a href="get-started.html#add-to-home-screen" class="app-anywhere-link">See how to add it to your Home Screen →</a>
+        </div>
+      </div>
+
+      <!-- Home Screen screenshot -->
+      <div class="app-anywhere-shot reveal">
+        <div class="phone-frame">
+          <img src="tile icon on home screen.png" alt="Mahjong IQ app icon added to an iPhone Home Screen" />
+        </div>
+        <p class="app-anywhere-caption">Add Mahjong IQ to your Home Screen and open it just like your other apps.</p>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -816,7 +910,7 @@
       <div class="when-col reveal">
         <span class="when-col-label">Playing on your own</span>
         <h3>Practice. Compare. Improve.</h3>
-        <p>Pick tiles at random, look at your card, and choose the hand you'd play. Then enter those tiles into the analyzer and see how your answer compares. A great way for beginners learning mahjong to learn the card faster — and for experienced players to sharpen their instincts.</p>
+        <p>Pick tiles at random, review your card, and choose the hand you would pursue. Then enter those tiles into the Hand Analyzer and compare your thinking with Mahjong IQ's recommendations. It is a useful way for newer players to learn the card faster—and for experienced players to sharpen their instincts.</p>
       </div>
 
       <div class="when-divider"></div>
@@ -824,7 +918,7 @@
       <div class="when-col reveal">
         <span class="when-col-label">Playing with a group</span>
         <h3>Learn Together. Play Together.</h3>
-        <p>This app is great for group play when everyone has access. Enter your tiles at the start of the game and begin with a clear strategy from the first draw. Perfect for tables of newer players learning mahjong and improving together.</p>
+        <p>Mahjong IQ can also be used during group play when everyone at the table agrees to use it. Enter your tiles at the start of the game, compare possible hand paths, and begin with a clearer strategy from the first draw. It can be especially helpful for groups learning and improving together.</p>
       </div>
 
     </div>
@@ -836,15 +930,15 @@
 <section class="final-section" id="faq">
   <div class="container-narrow">
     <div class="reveal">
-      <h2 class="final-heading">Start your next game<br>with a strategy.</h2>
-      <p class="final-body">See your best hand options in seconds — and play with confidence from the first move.</p>
+      <h2 class="final-heading">Start your next game<br>with a clearer strategy.</h2>
+      <p class="final-body">Compare your strongest hands, explore alternate paths, and make more confident decisions from the first move.</p>
       <div style="display:inline-block;background:rgba(184,154,91,.15);border:1px solid rgba(184,154,91,.35);border-radius:8px;padding:16px 32px;margin-bottom:36px;">
         <p style="font-size:16px;font-weight:500;color:var(--gold);letter-spacing:.02em;">Try it free — 3 analyses on us.</p>
-        <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,.5);margin-top:4px;">Unlock unlimited access for $14.99 — one time, no subscription.</p>
+        <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,.5);margin-top:4px;">Unlock unlimited access for $14.99—one time, no subscription.</p>
       </div>
       <br>
       <a href="get-started.html" class="btn-primary gold">Analyze Your Hand</a>
-      <p class="final-fine">No account needed. Works on mobile.</p>
+      <p class="final-fine">No account needed. Use it in your browser or add it to your Home Screen like an app.</p>
     </div>
   </div>
 </section>
