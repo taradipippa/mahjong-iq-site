@@ -237,6 +237,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 13px; font-weight: 600; letter-spacing: 0.07em;
       text-transform: uppercase;
+      text-decoration: none;
       padding: 18px 32px; border-radius: 4px;
       background: var(--gold); color: var(--navy);
       border: 1.5px solid var(--gold);
@@ -258,63 +259,79 @@
       line-height: 1.5;
     }
 
-    .hero-scroll-link {
-      display: inline-block;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.28);
-      text-decoration: none; transition: color .15s;
+    .paid-hero-copy {
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,.55);
+      line-height: 1.65;
+      margin: 20px 0 18px;
     }
-    .hero-scroll-link:hover { color: rgba(255,255,255,.5); }
+
+    .hero-secondary-link {
+      display: block;
+      font-size: 13px; font-weight: 400;
+      color: rgba(255,255,255,.42);
+      text-decoration: none; text-align: center;
+      margin-bottom: 20px;
+      transition: color .15s;
+    }
+    .hero-secondary-link:hover { color: rgba(255,255,255,.68); text-decoration: underline; }
 
     @media (max-width: 680px) {
       .gs-hero-inner { padding: 140px 24px 100px; }
       .trial-widget { padding: 32px 24px 28px; }
     }
 
-    /* ── HOW STRIP ── */
-    .how-strip {
+    /* ── APP EXPLAINER ── */
+    .app-explainer {
       background: var(--white);
-      padding: 88px 0;
+      padding: 96px 0;
       border-bottom: 1px solid var(--border-lt);
+      text-align: center;
     }
-    .how-strip-inner {
-      max-width: 1040px; margin: 0 auto; padding: 0 56px;
+    .app-explainer-inner {
+      max-width: 600px; margin: 0 auto; padding: 0 56px;
     }
-    .how-strip-label {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold);
-      text-align: center; display: block; margin-bottom: 48px;
-    }
-    .how-strip-grid {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-    }
-    .how-step {
-      padding: 0 40px; text-align: center;
-      border-right: 1px solid var(--border-lt);
-    }
-    .how-step:first-child { padding-left: 0; }
-    .how-step:last-child  { border-right: none; padding-right: 0; }
-    .how-num {
+    .app-explainer-h2 {
       font-family: 'Cormorant SC', serif;
-      font-size: 40px; font-weight: 400;
-      color: var(--gold-lt); line-height: 1;
-      display: block; margin-bottom: 14px;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 400; line-height: 1.18;
+      color: var(--navy); margin-bottom: 24px;
     }
-    .how-step h3 {
-      font-family: 'Cormorant SC', serif;
-      font-size: 18px; font-weight: 400;
-      color: var(--navy); margin-bottom: 8px;
+    .app-explainer-body {
+      font-size: 15px; font-weight: 300;
+      color: var(--slate); line-height: 1.75;
+      margin-bottom: 20px;
     }
-    .how-step p {
-      font-size: 14px; font-weight: 300;
-      color: var(--slate); line-height: 1.72;
+    .app-explainer-tagline {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--gold); margin-bottom: 40px;
     }
-    @media (max-width: 720px) {
-      .how-strip-inner { padding: 0 28px; }
-      .how-strip-grid { grid-template-columns: 1fr; gap: 40px; }
-      .how-step { border-right: none; padding: 0 0 40px; border-bottom: 1px solid var(--border-lt); }
-      .how-step:last-child { border-bottom: none; padding-bottom: 0; }
+    .app-explainer-phone {
+      display: flex; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .app-explainer-shot {
+      display: block;
+      border-radius: 16px;
+      width: 220px;
+      height: auto;
+      box-shadow:
+        0 8px 32px rgba(0,0,0,.18),
+        0 2px 8px rgba(0,0,0,.1);
+    }
+    .app-explainer-caption {
+      font-size: 13px; font-weight: 300; font-style: italic;
+      color: var(--slate-lt); margin-bottom: 12px;
+    }
+    .app-explainer-jump {
+      display: inline-block;
+      font-size: 13px; font-weight: 500;
+      color: var(--gold-dark); text-decoration: none;
+    }
+    .app-explainer-jump:hover { text-decoration: underline; }
+    @media (max-width: 680px) {
+      .app-explainer { padding: 64px 0; }
+      .app-explainer-inner { padding: 0 24px; }
     }
 
     /* ── PRICING ── */
@@ -378,11 +395,6 @@
       font-size: 14px; font-weight: 300;
       color: rgba(255,255,255,.4); letter-spacing: 0.04em;
     }
-    .price-tagline {
-      font-size: 13px; font-weight: 300;
-      color: rgba(255,255,255,.38); font-style: italic;
-    }
-
     .pricing-card-body { padding: 36px 44px 40px; }
 
     .pricing-features {
@@ -437,38 +449,6 @@
     .after-purchase-inner {
       max-width: 760px; margin: 0 auto; padding: 0 56px;
     }
-    .after-purchase-eyebrow {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold);
-      display: block; text-align: center; margin-bottom: 16px;
-    }
-    .after-purchase-h2 {
-      font-family: 'Cormorant SC', serif;
-      font-size: clamp(26px, 3vw, 38px);
-      font-weight: 400; color: var(--navy);
-      text-align: center; margin-bottom: 56px; line-height: 1.2;
-    }
-    .ap-steps {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 32px; margin-bottom: 56px;
-    }
-    .ap-step {
-      text-align: center;
-    }
-    .ap-num {
-      font-family: 'Cormorant SC', serif;
-      font-size: 13px; font-weight: 500; letter-spacing: 0.18em;
-      color: var(--gold); display: block; margin-bottom: 14px;
-    }
-    .ap-step h3 {
-      font-family: 'Cormorant SC', serif;
-      font-size: 19px; font-weight: 500;
-      color: var(--navy); margin-bottom: 10px;
-    }
-    .ap-step p {
-      font-size: 14px; font-weight: 300;
-      color: var(--slate); line-height: 1.7;
-    }
     .ap-divider {
       width: 40px; height: 1px;
       background: var(--gold); opacity: .4;
@@ -483,10 +463,14 @@
       text-align: center;
       margin-bottom: 40px;
     }
-    .code-entry-label {
-      font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--slate-lt);
-      display: block; margin-bottom: 20px;
+    .code-entry-heading {
+      font-family: 'Cormorant SC', serif;
+      font-size: 20px; font-weight: 500;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .code-entry-sub {
+      font-size: 13px; font-weight: 300;
+      color: var(--slate); margin-bottom: 22px;
     }
     .code-entry-row {
       display: flex; gap: 10px; max-width: 420px; margin: 0 auto 14px;
@@ -520,6 +504,19 @@
     }
     .code-message.success { color: #2A6B4A; font-weight: 500; }
     .code-message.error   { color: #B04040; }
+    /* Home screen intro */
+    .hs-intro-title {
+      text-align: center;
+      font-family: 'Cormorant SC', serif;
+      font-size: 22px; font-weight: 500;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .hs-intro-sub {
+      text-align: center;
+      font-size: 14px; font-weight: 300;
+      color: var(--slate); line-height: 1.7;
+      max-width: 480px; margin: 0 auto 32px;
+    }
     /* Home screen strip */
     .hs-strip {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -564,103 +561,26 @@
     .hs-screenshots {
       display: flex; gap: 12px; margin-top: 20px;
     }
-    .hs-screenshots img {
+    .hs-screenshot {
       width: calc(50% - 6px);
+    }
+    .hs-screenshot img {
+      display: block;
+      width: 100%;
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0,0,0,.15);
     }
+    .hs-screenshot-caption {
+      font-size: 11.5px; font-weight: 400;
+      color: var(--slate-lt); line-height: 1.4;
+      text-align: center; margin-top: 8px;
+    }
     @media (max-width: 680px) {
       .after-purchase-inner { padding: 0 24px; }
-      .ap-steps { grid-template-columns: 1fr; gap: 28px; }
       .hs-strip { grid-template-columns: 1fr; }
       .code-entry-row { flex-direction: column; }
     }
 
-    /* ── ACCESS SECTION (shown after purchase) ── */
-    .access-section {
-      background: var(--navy);
-      padding: 100px 0;
-      text-align: center;
-      display: none;
-    }
-    .access-section.visible { display: block; }
-    .access-inner {
-      max-width: 640px; margin: 0 auto; padding: 0 56px;
-    }
-    .access-badge {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 64px; height: 64px; border-radius: 50%;
-      background: rgba(93,196,144,.12);
-      border: 2px solid rgba(93,196,144,.4);
-      font-size: 26px; color: #5DC490;
-      margin-bottom: 28px;
-    }
-    .access-h2 {
-      font-family: 'Cormorant SC', serif;
-      font-size: clamp(28px, 3.5vw, 42px);
-      font-weight: 400; line-height: 1.18;
-      color: var(--white); margin-bottom: 14px;
-    }
-    .access-body {
-      font-size: 16px; font-weight: 300;
-      color: rgba(255,255,255,.48);
-      margin-bottom: 40px; line-height: 1.72;
-    }
-    .btn-launch {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; text-decoration: none;
-      padding: 18px 44px; border-radius: 4px;
-      background: var(--gold); color: var(--navy);
-      transition: all .18s; margin-bottom: 48px;
-    }
-    .btn-launch:hover { background: #A88A4A; transform: translateY(-1px); }
-
-    @media (max-width: 680px) {
-      .access-inner { padding: 0 24px; }
-    }
-
-    /* ── HOME SCREEN STEPS (inside FAQ) ── */
-    .faq-hs-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 24px; padding: 4px 0 24px;
-    }
-    .faq-hs-col {
-      background: var(--bg);
-      border-radius: 8px; padding: 24px 20px;
-    }
-    .faq-hs-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--gold);
-      display: block; margin-bottom: 4px;
-    }
-    .faq-hs-name {
-      font-family: 'Cormorant SC', serif;
-      font-size: 17px; font-weight: 500;
-      color: var(--navy); margin-bottom: 4px;
-    }
-    .faq-hs-note {
-      font-size: 12px; color: var(--slate-lt);
-      font-style: italic; margin-bottom: 20px; line-height: 1.5;
-    }
-    .faq-hs-step {
-      display: flex; gap: 13px; align-items: flex-start;
-      margin-bottom: 16px;
-    }
-    .faq-hs-step:last-child { margin-bottom: 0; }
-    .faq-hs-num {
-      width: 22px; height: 22px; border-radius: 50%;
-      background: var(--navy); color: #fff;
-      font-size: 11px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 2px;
-    }
-    .faq-hs-text {
-      font-size: 14px; font-weight: 300;
-      color: var(--slate); line-height: 1.65;
-    }
-    .faq-hs-text strong { color: var(--navy); font-weight: 500; }
     .tap {
       display: inline-flex; align-items: center;
       background: var(--navy); color: #fff;
@@ -669,9 +589,6 @@
       vertical-align: middle; white-space: nowrap;
     }
     .tap.gold { background: var(--gold); color: var(--navy); }
-    @media (max-width: 640px) {
-      .faq-hs-grid { grid-template-columns: 1fr; }
-    }
 
     /* ── FAQ ── */
     .faq-section {
@@ -711,10 +628,9 @@
       .faq-section { padding: 72px 0; }
       .faq-inner { padding: 0 20px; }
       /* Global mobile padding */
-      .gs-hero-inner, .how-strip-inner, .pricing-inner,
-      .after-purchase-inner, .access-inner { padding-left: 20px; padding-right: 20px; }
+      .gs-hero-inner, .pricing-inner,
+      .after-purchase-inner { padding-left: 20px; padding-right: 20px; }
       /* Stack pricing features nicely */
-      .ap-steps { grid-template-columns: 1fr; }
       .hs-strip { grid-template-columns: 1fr; }
       .hs-screenshots { gap: 8px; }
       /* Hero buttons full width */
@@ -794,64 +710,69 @@
 <section class="gs-hero">
   <div class="gs-hero-inner">
 
-    <span class="hero-eyebrow">Try It Free</span>
-    <h1 class="hero-h1 reveal">Try it free.<br>Play it anywhere.</h1>
-    <p class="hero-sub reveal reveal-delay-1">
-      Analyze 3 American Mahjong hands for free and discover why players use Mahjong IQ
-      to build confidence and see stronger possibilities.<br><br>
-      <em>The more you use it, the less you'll need it.</em>
-    </p>
+    <!-- Unpaid state -->
+    <div id="unpaidHero">
+      <span class="hero-eyebrow">Try It Free</span>
+      <h1 class="hero-h1 reveal">Try It Free. Play It Anywhere.</h1>
+      <p class="hero-sub reveal reveal-delay-1">
+        Analyze up to 3 American Mahjong hands at no cost—no account, no credit card, no commitment.
+      </p>
 
-    <!-- Trial widget -->
-    <div class="trial-widget reveal reveal-delay-2">
-      <div class="trial-dots" id="trialDots">
-        <span class="trial-dot" data-index="0"></span>
-        <span class="trial-dot" data-index="1"></span>
-        <span class="trial-dot" data-index="2"></span>
+      <!-- Trial widget -->
+      <div class="trial-widget reveal reveal-delay-2">
+        <div class="trial-dots" id="trialDots">
+          <span class="trial-dot" data-index="0"></span>
+          <span class="trial-dot" data-index="1"></span>
+          <span class="trial-dot" data-index="2"></span>
+        </div>
+        <div class="trial-status" id="trialStatus">3 free analyses remaining</div>
+        <button class="btn-try" id="tryBtn" onclick="handleTry()">
+          Analyze Your Hand — Free
+        </button>
+        <a href="#" id="directBuyLink" class="hero-secondary-link">Already know you want unlimited access? <u>Buy the 2026 Hand Analyzer for $14.99 →</u></a>
+        <p class="trial-note" id="trialNote">Opens in a new tab. No account needed.<br>Add it to your Home Screen and use it like an app.</p>
       </div>
-      <div class="trial-status" id="trialStatus">3 free analyses remaining</div>
-      <button class="btn-try" id="tryBtn" onclick="handleTry()">
-        Analyze Your Hand — Free
-      </button>
-      <p class="trial-note" id="trialNote">Opens in a new tab · No account needed</p>
     </div>
 
-    <a href="#pricing" class="hero-scroll-link reveal reveal-delay-2">See pricing ↓</a>
+    <!-- Paid / unlocked state -->
+    <div id="paidHero" style="display:none;">
+      <h1 class="hero-h1">Your Mahjong IQ Access Is Ready</h1>
+      <p class="hero-sub">Your purchase is confirmed, and unlimited access to the 2026 Hand Analyzer is now unlocked.</p>
+
+      <div class="trial-widget">
+        <a href="#" id="launchBtn" class="btn-try purchased-state">Open Hand Analyzer</a>
+        <p class="paid-hero-copy">For the easiest ongoing access, add Mahjong IQ to your phone or tablet's Home Screen. It will appear as its own app icon alongside your other apps, so you can open it with one tap whenever you play.</p>
+        <a href="#add-to-home-screen" class="hero-secondary-link">Add Mahjong IQ to Your Home Screen ↓</a>
+        <p class="trial-note">You'll also receive an email from Mahjong IQ with your access link and backup code so you can return anytime or use another device.</p>
+      </div>
+    </div>
 
   </div>
 </section>
 
 
-<!-- ── HOW IT WORKS STRIP ── -->
-<div class="how-strip">
-  <div class="how-strip-inner">
-    <span class="how-strip-label">Here's how it works</span>
-    <div class="how-strip-grid">
-      <div class="how-step reveal">
-        <span class="how-num">01</span>
-        <h3>Try it free</h3>
-        <p>Analyze up to 3 hands at no cost — no account, no credit card, no commitment.</p>
-      </div>
-      <div class="how-step reveal reveal-delay-1">
-        <span class="how-num">02</span>
-        <h3>See what's possible</h3>
-        <p>Explore your best hand options, win probabilities, pivot paths, and discard guidance.</p>
-      </div>
-      <div class="how-step reveal reveal-delay-2">
-        <span class="how-num">03</span>
-        <h3>Unlock unlimited access</h3>
-        <p>Make a one-time purchase for unlimited 2026 hand analyses. Open it in your browser or add it to your Home Screen for easy access.</p>
-      </div>
+<!-- ── APP EXPLAINER ── -->
+<section class="app-explainer">
+  <div class="app-explainer-inner">
+    <h2 class="app-explainer-h2 reveal">Mahjong IQ Works Like an App</h2>
+    <p class="app-explainer-body reveal reveal-delay-1">Mahjong IQ is a browser-based app you can use on your phone, tablet, or computer—without downloading anything from the App Store or Google Play.</p>
+    <p class="app-explainer-body reveal reveal-delay-1">Add it to your phone or tablet's Home Screen and it will appear as its own Mahjong IQ app icon alongside your other apps. From then on, just tap the icon whenever you're ready to analyze a hand.</p>
+    <p class="app-explainer-tagline reveal reveal-delay-2">One-time setup. One-tap access whenever you play.</p>
+
+    <div class="app-explainer-phone reveal reveal-delay-2">
+      <img class="app-explainer-shot" src="tile icon on home screen.png" alt="Mahjong IQ app icon added to an iPhone Home Screen" />
     </div>
+    <p class="app-explainer-caption reveal reveal-delay-2">Add Mahjong IQ to your Home Screen and open it just like your other apps.</p>
+    <a href="#add-to-home-screen" class="app-explainer-jump reveal reveal-delay-2">See how to add it to your Home Screen ↓</a>
   </div>
-</div>
+</section>
 
 
 <!-- ── PRICING ── -->
 <section id="pricing" class="pricing-section">
   <div class="pricing-inner">
     <span class="section-eyebrow reveal">Pricing</span>
-    <h2 class="section-h2 reveal reveal-delay-1">One price. Unlimited hands.</h2>
+    <h2 class="section-h2 reveal reveal-delay-1">One Price. Unlimited Hands.</h2>
     <p class="section-sub reveal reveal-delay-1">One payment. Unlimited use of the 2026 Hand Analyzer.</p>
 
     <div class="pricing-card reveal reveal-delay-2">
@@ -861,18 +782,17 @@
           <span class="price-amount" id="priceDisplay">$14.99</span>
           <span class="price-period">one-time</span>
         </div>
-        <p class="price-tagline">Unlimited use of the 2026 Hand Analyzer — one payment, no recurring subscription.</p>
       </div>
       <div class="pricing-card-body">
         <ul class="pricing-features">
-          <li>Unlimited hand analyses for the 2026 hands</li>
-          <li>All hand categories scored with win probability</li>
-          <li>Pivot hand and alternate path recommendations</li>
+          <li>Unlimited hand analyses for the 2026 card</li>
+          <li>Strongest hand options ranked by strategic potential</li>
+          <li>Pivot paths and alternate hand recommendations</li>
           <li>Discard guidance</li>
-          <li>Works in any browser — no install required</li>
-          <li>Add to home screen on iPhone or Android</li>
-          <li>No subscription or recurring access fee</li>
-          <li>Future annual Hand Analyzers will be offered separately</li>
+          <li>Optional Charleston guidance with the ability to reanalyze your hand</li>
+          <li>Browser-based app—no App Store or Google Play download required</li>
+          <li>Add it to your Home Screen as an app icon for one-tap access</li>
+          <li>No subscription or recurring fee</li>
         </ul>
         <a href="#" id="buyBtn" class="btn-buy">Buy Now — <span id="btnPrice">$14.99</span></a>
         <p class="pricing-guarantee">
@@ -888,48 +808,14 @@
 <section class="after-purchase">
   <div class="after-purchase-inner">
 
-    <span class="after-purchase-eyebrow">Unlocking Full Access</span>
-    <h2 class="after-purchase-h2">Ready to go unlimited? Here's how.</h2>
-
-    <div class="ap-steps">
-      <div class="ap-step reveal">
-        <span class="ap-num">01</span>
-        <h3>Purchase</h3>
-        <p>Complete checkout via Stripe. You'll receive a confirmation email with your access code.</p>
-      </div>
-      <div class="ap-step reveal reveal-delay-1">
-        <span class="ap-num">02</span>
-        <h3>Enter Your Code</h3>
-        <p>You'll receive an email with your access code to unlock unlimited access. You can click the link in that email to have the code applied automatically, or return to this page and enter your access code below</p>
-      </div>
-      <div class="ap-step reveal reveal-delay-2">
-        <span class="ap-num">03</span>
-        <h3>Play Anywhere</h3>
-        <p>Open the Hand Analyzer in your browser — or add it to your home screen so it's always one tap away.</p>
-      </div>
-    </div>
-
-    <div class="ap-divider"></div>
-
-    <!-- Access code entry -->
-    <div class="code-entry-wrap reveal">
-      <span class="code-entry-label">Already purchased? Enter your access code</span>
-      <div class="code-entry-row">
-        <input type="text" id="accessCodeInput" class="code-input" placeholder="Enter access code" autocomplete="off" autocapitalize="none" />
-        <button class="btn-unlock" onclick="submitAccessCode()">Unlock</button>
-      </div>
-      <p class="code-message" id="codeMessage">Your code was included in your Stripe confirmation email.</p>
-    </div>
-
-    <div class="ap-divider"></div>
-
     <!-- Home screen instructions -->
-    <p style="text-align:center; font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--slate-lt); margin-bottom:24px;">Add to Home Screen</p>
+    <h3 class="hs-intro-title" id="add-to-home-screen">Add to Home Screen</h3>
+    <p class="hs-intro-sub">Ready to add it? Follow the instructions for your device below to place the Mahjong IQ app icon on your Home Screen.</p>
     <div class="hs-strip reveal">
       <div class="hs-card">
         <span class="hs-card-platform">iPhone</span>
         <div class="hs-card-browser">Safari</div>
-        <p class="hs-card-note">Must use Safari — other browsers don't support this on iPhone</p>
+        <p class="hs-card-note">You must use Safari to add Mahjong IQ to your Home Screen. Other iPhone browsers can still open and use the Hand Analyzer.</p>
         <div class="hs-step">
           <div class="hs-step-num">1</div>
           <div class="hs-step-text">Open the Hand Analyzer in <strong>Safari</strong></div>
@@ -951,14 +837,20 @@
           <div class="hs-step-text">Tap <span class="tap gold">Add</span> — done</div>
         </div>
         <div class="hs-screenshots">
-          <img src="add to home screen 1 final.png" alt="Tap the Share button in Safari" />
-          <img src="add to home screen 2 final.png" alt="Tap View More then Add to Home Screen" />
+          <figure class="hs-screenshot">
+            <img src="add to home screen 1 final.png" alt="Tap the Share button in Safari" />
+            <figcaption class="hs-screenshot-caption">Tap the Share button in Safari</figcaption>
+          </figure>
+          <figure class="hs-screenshot">
+            <img src="add to home screen 2 final.png" alt="Tap View More, then Add to Home Screen" />
+            <figcaption class="hs-screenshot-caption">Tap View More, then Add to Home Screen</figcaption>
+          </figure>
         </div>
       </div>
       <div class="hs-card">
         <span class="hs-card-platform">Android</span>
         <div class="hs-card-browser">Chrome</div>
-        <p class="hs-card-note">Works in Chrome — also in most other Android browsers</p>
+        <p class="hs-card-note">Use Google Chrome for the steps below.</p>
         <div class="hs-step">
           <div class="hs-step-num">1</div>
           <div class="hs-step-text">Open the Hand Analyzer in <strong>Chrome</strong></div>
@@ -969,7 +861,7 @@
         </div>
         <div class="hs-step">
           <div class="hs-step-num">3</div>
-          <div class="hs-step-text">Tap <span class="tap">Add to Home screen</span></div>
+          <div class="hs-step-text">Tap <span class="tap">Add to Home Screen</span></div>
         </div>
         <div class="hs-step">
           <div class="hs-step-num">4</div>
@@ -978,20 +870,19 @@
       </div>
     </div>
 
-  </div>
-</section>
+    <div class="ap-divider"></div>
 
+    <!-- Access code entry -->
+    <div class="code-entry-wrap reveal" id="alreadyPurchasedBlock">
+      <span class="code-entry-heading">Already purchased?</span>
+      <p class="code-entry-sub">Enter your backup access code to restore access on this device.</p>
+      <div class="code-entry-row">
+        <input type="text" id="accessCodeInput" class="code-input" placeholder="Enter access code" autocomplete="off" autocapitalize="none" />
+        <button class="btn-unlock" onclick="submitAccessCode()">Restore Access</button>
+      </div>
+      <p class="code-message" id="codeMessage">Your backup code is included in your Mahjong IQ access email.</p>
+    </div>
 
-<!-- ── ACCESS SECTION — shown after purchase ── -->
-<section id="access" class="access-section">
-  <div class="access-inner">
-    <div class="access-badge">✓</div>
-    <h2 class="access-h2">You're in. Let's play.</h2>
-    <p class="access-body">
-      Your purchase is confirmed. The Hand Analyzer is ready whenever you are —
-      open it in your browser, or add it to your home screen for one-tap access.
-    </p>
-    <a href="#" id="launchBtn" class="btn-launch">Launch Hand Analyzer →</a>
   </div>
 </section>
 
@@ -999,99 +890,85 @@
 <!-- ── FAQ ── -->
 <section class="faq-section">
   <div class="faq-inner">
-    <h2 class="faq-h2 reveal">Questions</h2>
+    <h2 class="faq-h2 reveal">Frequently Asked Questions</h2>
 
     <details class="faq-item reveal">
       <summary>What happens right after I buy?</summary>
-      <p>Stripe will send you a confirmation email, and you'll land back here with your access unlocked. Just click Launch Hand Analyzer and you're in. We'd recommend adding it to your home screen right away so it's always one tap away — see below for how.</p>
+      <p>After checkout, you'll return to Mahjong IQ with your unlimited access unlocked. Tap Open Hand Analyzer to start using it right away.</p>
+      <p style="margin-top: 12px;">You'll also receive an email from Mahjong IQ with your access link and backup code. You can use the link anytime to open the Hand Analyzer again or access it from another device.</p>
+      <p style="margin-top: 12px;">For the easiest ongoing access, we recommend adding Mahjong IQ to your Home Screen. It will appear as its own app icon alongside your other apps, so it's always one tap away. Instructions are included above.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>Is Mahjong IQ an app?</summary>
+      <p>Yes. Mahjong IQ is a browser-based app, which means you open it through your phone, tablet, or computer rather than downloading it from the App Store or Google Play.</p>
+      <p style="margin-top: 12px;">On a phone or tablet, you can add Mahjong IQ to your Home Screen. It will appear as its own app icon alongside your other apps, allowing you to open the Hand Analyzer with one tap.</p>
+      <p style="margin-top: 12px;">You only need to complete the Home Screen setup once on each device.</p>
     </details>
 
     <details class="faq-item reveal">
       <summary>I bought it on my computer. How do I get it on my phone?</summary>
-      <p>Just open <strong>getmahjongiq.com/get-started.html</strong> in your phone's browser. This page will remember your purchase and show you the Launch button. Tap it, then follow the steps below to add it to your home screen.</p>
+      <p>Open your Mahjong IQ access email on your phone and tap Open Hand Analyzer.</p>
+      <p style="margin-top: 12px;">Once it opens, follow the instructions above to add Mahjong IQ to your Home Screen. It will then appear as an app icon alongside your other apps for easy access whenever you play.</p>
     </details>
 
     <details class="faq-item reveal">
-      <summary>How do I add the Hand Analyzer to my home screen so it looks like all of my other apps?</summary>
-      <div class="faq-hs-grid">
-        <div class="faq-hs-col">
-          <span class="faq-hs-label">iPhone</span>
-          <div class="faq-hs-name">Safari</div>
-          <p class="faq-hs-note">Must use Safari — other browsers don't support this on iPhone</p>
-          <div class="faq-hs-step">
-            <div class="faq-hs-num">1</div>
-            <div class="faq-hs-text">Open the Hand Analyzer in <strong>Safari</strong></div>
-          </div>
-          <div class="faq-hs-step">
-            <div class="faq-hs-num">2</div>
-            <div class="faq-hs-text">Tap the <span class="tap">Share ↑</span> button at the bottom of the screen</div>
-          </div>
-          <div class="faq-hs-step">
-            <div class="faq-hs-num">3</div>
-            <div class="faq-hs-text">Tap <span class="tap">View More</span> to see all options</div>
-          </div>
-          <div class="faq-hs-step">
-            <div class="faq-hs-num">4</div>
-            <div class="faq-hs-text">Tap <span class="tap">Add to Home Screen</span></div>
-          </div>
-          <div class="faq-hs-step">
-            <div class="faq-hs-num">5</div>
-            <div class="faq-hs-text">Tap <span class="tap gold">Add</span> — done</div>
-          </div>
-        </div>
-        <div class="faq-hs-col">
-          <span class="faq-hs-label">Android</span>
-          <div class="faq-hs-name">Chrome</div>
-          <p class="faq-hs-note">Works in Chrome — also in most other Android browsers</p>
-          <div class="faq-hs-step">
-            <div class="faq-hs-num">1</div>
-            <div class="faq-hs-text">Open the Hand Analyzer in <strong>Chrome</strong></div>
-          </div>
-          <div class="faq-hs-step">
-            <div class="faq-hs-num">2</div>
-            <div class="faq-hs-text">Tap the <span class="tap">⋮</span> menu in the top right corner</div>
-          </div>
-          <div class="faq-hs-step">
-            <div class="faq-hs-num">3</div>
-            <div class="faq-hs-text">Tap <span class="tap">Add to Home screen</span></div>
-          </div>
-          <div class="faq-hs-step">
-            <div class="faq-hs-num">4</div>
-            <div class="faq-hs-text">Tap <span class="tap gold">Add</span> — done</div>
-          </div>
-        </div>
-      </div>
-    </details>
-
-    <details class="faq-item reveal">
-      <summary>When should I use the Hand Analyzer?</summary>
-      <p>If you're playing by yourself, a great way to practice is to pick some tiles, decide which hands you'd play in a real game, then hit Analyze and see how your thinking compares. You'll learn a lot from the guidance.</p>
-      <p style="margin-top: 12px;">If you're playing with others, make sure everyone at the table has access so no one has an unfair advantage. The best time to use it together is before, during, and/or after the charleston — before the first tile is cast.</p>
+      <summary>How do I add the Hand Analyzer to my Home Screen so it looks like my other apps?</summary>
+      <p>Follow the iPhone or Android instructions above.</p>
+      <p style="margin-top: 12px;">On an iPhone, you must use Safari to add Mahjong IQ to your Home Screen. You can open and use the Hand Analyzer in other iPhone browsers, but the option to create the Home Screen app icon is available through Safari.</p>
+      <p style="margin-top: 12px;">On an Android device, follow the instructions using Google Chrome.</p>
     </details>
 
     <details class="faq-item reveal">
       <summary>I got a new phone or cleared my browser. Now what?</summary>
-      <p>Come back to <strong>getmahjongiq.com/get-started.html</strong> first — this page remembers your purchase most of the time and will get you right back in. If you're on a brand new device and it's not recognizing you, just email <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> with your Stripe receipt and we'll restore your access.</p>
+      <p>Open your Mahjong IQ access email and tap Open Hand Analyzer again.</p>
+      <p style="margin-top: 12px;">You can also enter the backup access code included in that email in the Already purchased? section of this page.</p>
+      <p style="margin-top: 12px;">If you no longer have the email, contact <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> for help restoring your access.</p>
     </details>
 
     <details class="faq-item reveal">
-      <summary>Does it work without wifi?</summary>
-      <p>Yes. Once you've opened the Hand Analyzer on your device, it works even without a connection — perfect for playing at someone's house or anywhere with spotty signal.</p>
+      <summary>When should I use the Hand Analyzer?</summary>
+      <p>When practicing on your own, choose a set of tiles and decide which hands you would pursue in a real game. Then analyze the hand to compare your thinking with Mahjong IQ's recommendations and explore possibilities you may not have considered.</p>
+      <p style="margin-top: 12px;">When playing with others, make sure everyone at the table agrees to the use of Mahjong IQ so no one has an unfair advantage. It can be especially helpful before, during, or immediately after the Charleston—before the first tile is discarded.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>Does it work without Wi-Fi?</summary>
+      <p>Yes. Once you've opened the Hand Analyzer on your device while connected to the internet, it can continue to work without a connection.</p>
+      <p style="margin-top: 12px;">You'll need to be online the first time so the Hand Analyzer can load and save the files it needs for offline use. We recommend opening it once before heading somewhere with limited Wi-Fi or cellular service.</p>
     </details>
 
     <details class="faq-item reveal">
       <summary>Is this a one-time purchase or a subscription?</summary>
-      <p>It's a one-time $14.99 purchase, not a subscription. You can use the 2026 Hand Analyzer for unlimited hand analyses, with no recurring charges. Future annual versions will be offered separately, and purchasing a newer version is always optional.</p>
+      <p>It is a one-time purchase of $14.99 for unlimited use of the 2026 Hand Analyzer.</p>
+      <p style="margin-top: 12px;">There is no subscription and no recurring charge.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>Will I receive updates to the 2026 Hand Analyzer?</summary>
+      <p>Yes. Your purchase includes updates and improvements made to the 2026 Hand Analyzer during the 2026 card year, including recommendation refinements, usability improvements, bug fixes, and other enhancements.</p>
+      <p style="margin-top: 12px;">When an update is available, you'll automatically see a notification banner inside the Hand Analyzer. Tap the Update button to load the newest version.</p>
+      <p style="margin-top: 12px;">You will not be charged again for updates to the 2026 Hand Analyzer. Access to a future year's card will be offered separately.</p>
     </details>
 
     <details class="faq-item reveal">
       <summary>What happens when next year's hands come out?</summary>
-      <p>Your purchase is for the 2026 Hand Analyzer and is not automatically replaced when a new annual version is released. We plan to keep the 2026 Hand Analyzer available after future versions launch. Future Hand Analyzers will be offered separately, and purchasing a newer version is always optional.</p>
+      <p>Your purchase includes unlimited access to the Hand Analyzer for the 2026 card.</p>
+      <p style="margin-top: 12px;">Access to a future year's card will be offered separately. You will never be enrolled or charged automatically.</p>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>Notice an issue or have a suggestion?</summary>
+      <p>We welcome feedback that can help make Mahjong IQ even better.</p>
+      <p style="margin-top: 12px;">At the bottom of the results screen, tap Report an Issue or Give Feedback. The form will automatically include the tiles you selected, so you can explain the recommendation, issue, or improvement you'd like us to review.</p>
+      <p style="margin-top: 12px;">You can also send feedback through the contact form on the Mahjong IQ website.</p>
     </details>
 
     <details class="faq-item reveal">
       <summary>What's your refund policy?</summary>
-      <p>Because you can try the Hand Analyzer free before you buy, we don't offer refunds as a general policy. That said, if you ran into a technical problem we couldn't solve, reach out at <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> and we'll make it right.</p>
+      <p>Mahjong IQ includes 3 free hand analyses, giving you the opportunity to try the Hand Analyzer before purchasing unlimited access.</p>
+      <p style="margin-top: 12px;">Because Mahjong IQ is a digital product and access is delivered immediately after purchase, purchases are non-refundable once access has been provided.</p>
+      <p style="margin-top: 12px;">If you experience a technical problem or are unable to access the Hand Analyzer, contact <a href="mailto:tara@getmahjongiq.com" style="color:var(--navy);font-weight:500;">tara@getmahjongiq.com</a> so we can help resolve it.</p>
     </details>
   </div>
 </section>
@@ -1160,7 +1037,9 @@
   document.getElementById('priceDisplay').textContent = PRICE_DISPLAY;
   document.getElementById('btnPrice').textContent = PRICE_DISPLAY;
   document.getElementById('buyBtn').href = STRIPE_LINK;
-  document.getElementById('launchBtn').href = APP_URL + '?access=' + ACCESS_CODE;
+  document.getElementById('directBuyLink').href = STRIPE_LINK;
+  const launchBtn = document.getElementById('launchBtn');
+  if (launchBtn) launchBtn.href = APP_URL + '?access=' + ACCESS_CODE;
 
   /* ── Update all UI based on current state ── */
   function updateUI() {
@@ -1168,28 +1047,28 @@
     const used      = getUsed();
     const remaining = getRemaining();
 
+    const unpaidHero = document.getElementById('unpaidHero');
+    const paidHero    = document.getElementById('paidHero');
+    const pricing     = document.getElementById('pricing');
+    const alreadyPurchasedBlock = document.getElementById('alreadyPurchasedBlock');
+
+    /* Free-trial hero, pricing, and backup-code entry are unpaid-visitor content only */
+    unpaidHero.style.display = purchased ? 'none' : '';
+    paidHero.style.display = purchased ? '' : 'none';
+    pricing.style.display = purchased ? 'none' : '';
+    alreadyPurchasedBlock.style.display = purchased ? 'none' : '';
+
+    if (purchased) {
+      if (launchBtn) launchBtn.href = APP_URL + '?access=' + ACCESS_CODE;
+      return;
+    }
+
     const dots    = document.querySelectorAll('.trial-dot');
     const status  = document.getElementById('trialStatus');
     const tryBtn  = document.getElementById('tryBtn');
     const tryNote = document.getElementById('trialNote');
 
-    if (purchased) {
-      /* ── Purchased: everything unlocked ── */
-      dots.forEach(dot => {
-        dot.classList.remove('used');
-        dot.classList.add('purchased');
-      });
-      status.textContent = 'Unlimited access unlocked ✓';
-      status.className = 'trial-status purchased';
-      tryBtn.textContent = 'Launch Hand Analyzer →';
-      tryBtn.className = 'btn-try purchased-state';
-      tryNote.textContent = 'Opens in a new tab';
-
-      /* Show access section */
-      document.getElementById('access').classList.add('visible');
-      document.getElementById('launchBtn').href = APP_URL + '?access=' + ACCESS_CODE;
-
-    } else if (remaining === 0) {
+    if (remaining === 0) {
       /* ── Trials exhausted ── */
       dots.forEach(dot => dot.classList.add('used'));
       status.textContent = 'Free tries used — ready to go unlimited?';
@@ -1210,7 +1089,7 @@
       status.className = 'trial-status';
       tryBtn.textContent = 'Analyze Your Hand — Free';
       tryBtn.className = 'btn-try';
-      tryNote.textContent = 'Opens in a new tab · No account needed';
+      tryNote.innerHTML = 'Opens in a new tab. No account needed.<br>Add it to your Home Screen and use it like an app.';
     }
   }
 
@@ -1231,7 +1110,7 @@
       msg.className = 'code-message success';
       setTimeout(() => location.reload(), 1000);
     } else {
-      msg.textContent = 'That code doesn\'t look right. Check your confirmation email and try again.';
+      msg.textContent = 'That code doesn\'t look right. Check your Mahjong IQ access email and try again.';
       msg.className = 'code-message error';
     }
   }
